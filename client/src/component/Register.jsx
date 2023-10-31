@@ -15,9 +15,26 @@ const Register = () => {
             [e.target.name]: e.target.value
         })
     }
-
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+    const handleSubmit = async()=>{
+        try {
+          const response = await fetch('/api/users/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+    
+          if (response.status === 200) {
+            console.log(response)
+            console.log('Form data submitted successfully.');
+            // You can perform further actions on success.
+          } else {
+            console.error('Error submitting form data.', response.statusText);
+          }
+        } catch (error) {
+          console.error(error);
+        }
     }
   return (
     <div className="container mx-auto p-4">

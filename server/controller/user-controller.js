@@ -17,7 +17,7 @@ export const getAllUser = async(req, resp, next) => {
 
 
 export const register = async(req, res, next) => {
-    const {name, email, password} = req.body;
+    const {firstname, lastname, email, password} = req.body;
     let existingUser;
     try {
         existingUser = await users.findOne({email});
@@ -32,7 +32,8 @@ export const register = async(req, res, next) => {
     const hashedPass = bcrypt.hashSync(password)
 
     const newUser = new users({
-        name,
+        firstname,
+        lastname,
         email,
         password: hashedPass,
     })

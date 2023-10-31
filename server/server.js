@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import  cors from 'cors'
 import { getAllUser, login, register } from "./controller/user-controller.js";
 import { addBlog, deleteBlog, getAllBlogs, getByID, updateBlog } from "./controller/blog-controller.js";
 //import router from "./routes/user-routes.js";
@@ -12,6 +13,7 @@ const router = express.Router()
 const blogRouter = express.Router()
 
 app.use(express.json())
+app.use(cors());
 app.use('/api/users', router)
 app.use('/api/blogs', blogRouter)
 
