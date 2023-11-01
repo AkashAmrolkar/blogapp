@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import {Link} from 'react-router-dom'
-//import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {BsArrowRight} from 'react-icons/bs'
 import registerImg from '../assets/register.jpg'
 const Register = () => {
 
-  //const navigateTo = useNavigate();
+    const nav = useNavigate();
 
     const [formData, setFormData] = useState({
         firstname: '',
@@ -34,8 +33,7 @@ const Register = () => {
           if (response.status === 201) {
             console.log(response)
             console.log('Form data submitted successfully.');
-            // You can perform further actions on success.
-          //  navigateTo('/login');
+            nav('/login');
           } else {
             console.error('Error submitting form data.', response.statusText);
           }
@@ -44,7 +42,7 @@ const Register = () => {
         }
     }
   return (
-    <div className="container mx-auto p-4 h-screen flex items-center justify-center">
+    <div className=" p-4 h-screen flex items-center justify-center">
     <div className=' grid sm:grid-cols-1 md:grid-cols-2 items-center gap-5'>
       <div className=''>
         <img src={registerImg} alt='' width='100%' height='100%' />

@@ -6,7 +6,9 @@ const Layout = () => {
   return (
     <>
         <Header />
-        <PageRoutes />
+        <main className="container mx-auto py-10">
+          <PageRoutes />        
+        </main>
         <Footer />
     </>
   )
