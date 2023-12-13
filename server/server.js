@@ -1,47 +1,39 @@
 import express from "express";
 import mongoose from "mongoose";
 import  cors from 'cors'
-import { getAllUser, login, register } from "./controller/user-controller.js";
-import { addBlog, deleteBlog, getAllBlogs, getByID, updateBlog } from "./controller/blog-controller.js";
-//import router from "./routes/user-routes.js";
+import dotenv from 'dotenv'
+import userRoute from "./routes/user-routes.js";
+dotenv.config();
+
 const app = express();
 
-//user route
-const router = express.Router()
+app.use(express.json());
 
-//blog route
-const blogRouter = express.Router()
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:5173',
+}));
+app.use('/api/users', userRoute)
 
-app.use(express.json())
-app.use(cors());
-app.use('/api/users', router)
-app.use('/api/blogs', blogRouter)
+const mongoUrl = process.env.MONGODB_URL;
+const port = process.env.PORT || 8000;
 
-// Users Routes
-router.get('/', getAllUser);
-router.post('/register', register);
-router.post('/login', login);
+(async() => {
+    try {
+        await mongoose.connect(mongoUrl)
+        .then(()=>{
+            console.log('server is connected to database')
+        }).catch((e)=>{
+            console.log(e)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+})()
 
-//Blogs Routes
-blogRouter.get('/', getAllBlogs);
-
-blogRouter.post('/addblog', addBlog);
-blogRouter.post('/update/:id', updateBlog);
-blogRouter.get('/:id', getByID);
-blogRouter.delete('/:id', deleteBlog);
-
-
-
-mongoose.connect('mongodb+srv://akashamrolkar10:bUEFvo4zIJQX0k00@cluster0.umfttmm.mongodb.net/Blog?retryWrites=true&w=majority').then(()=>{
-    app.listen(8000, ()=>{
-        console.log('Server is working on 8000 port')
-    })
-}).then(()=>{
-    console.log('server is connected to database')
-}).catch((e)=>{
-    console.log(e)
+app.listen(port, ()=>{
+    console.log('Server is working on 8000 port')
 })
-
 
 
 //bUEFvo4zIJQX0k00

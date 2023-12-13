@@ -65,15 +65,12 @@ export const login = async (req, res, next) => {
 
         if (user && isPasswordCorrect) {
             // Generate web tokens
-            const accessToken = jwt.sign({ id: user.id }, 'mySecretKey')
+            const token = jwt.sign({ userId: user._id, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
+            res.json({ token });
+
             console.log("user loggedin successfully");
-            return res.status(200).json(
-                {
-                    firstname: user.firstname,
-                    email: user.email,
-                    accessToken,
-                }
-            );
+        } else {
+            return res.status(404).json({message: "Wrong Password"})
         }
     } catch (error) {
         console.log(error)
@@ -81,16 +78,17 @@ export const login = async (req, res, next) => {
 
 }
 
-const verify = (req, res, next)=>{
-    const authHeader = req.header.authorization;
+export const verifyToken = (req, res, next)=>{
+    const authHeader = req.header('Authorization');
     if(authHeader){
-        const token = authHeader.split(" ")[1];
-        jwt.verify(token, 'mySecretKey', (err, user)=>{
+        //const token = authHeader.split(" ")[1];
+        jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
             if(err){
                 return res.status(403).json('Token is not valid')
             }
 
-            req.user = user
+            req.userId = decoded.userId;
+            req.email = decoded.email;
             next()
         })
     } else{
