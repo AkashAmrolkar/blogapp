@@ -2,7 +2,9 @@ import { useState } from 'react'
 import loginImg from '../assets/login.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { BsArrowRight } from 'react-icons/bs'
+import { useAuth } from '../store/Auth'
 const Login = () => {
+  const{storeToken} = useAuth()
   const nav = useNavigate();
 
   const [data, setData] = useState({
@@ -26,13 +28,14 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       })
-
+      
       if (response.status === 200) {
-        console.log(response)
-        console.log('User LoggedIn successfully.');
-        // You can perform further actions on success.
-      //  navigateTo('/login');
-      nav('/');
+        const resData = await response.json();
+        console.log('Response Data: ',resData);
+
+        storeToken(resData.token)
+
+        nav('/');
       } else {
         console.error('Error while login please check you email and password', response.statusText);
       }

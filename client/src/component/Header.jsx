@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
+import { useAuth } from "../store/Auth"
 
 const Header = () => {
+  const {isLoggedIn} = useAuth();
   return (
     <div>
       <nav className="bg-blue-500 p-4">
@@ -10,7 +12,9 @@ const Header = () => {
             <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">Home</Link>
             <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">About</Link>
             <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">Contact</Link>
-            <Link to={'/login'} className="text-white font-semibold hover:text-blue-300">Login</Link>
+            {
+              isLoggedIn? <Link to={'/logout'} className="text-white font-semibold hover:text-blue-300">Logout</Link> : <Link to={'/login'} className="text-white font-semibold hover:text-blue-300">Login</Link>
+            }
           </div>
         </div>
       </nav>  

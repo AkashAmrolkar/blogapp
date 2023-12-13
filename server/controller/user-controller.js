@@ -66,9 +66,8 @@ export const login = async (req, res, next) => {
         if (user && isPasswordCorrect) {
             // Generate web tokens
             const token = jwt.sign({ userId: user._id, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
-            res.json({ token });
-
-            console.log("user loggedin successfully");
+            res.json({ message: 'user loggedin successfully', token });
+            
         } else {
             return res.status(404).json({message: "Wrong Password"})
         }
