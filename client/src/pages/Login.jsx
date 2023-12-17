@@ -30,12 +30,11 @@ const Login = () => {
       })
       
       if (response.status === 200) {
-        const resData = await response.json();
-        console.log('Response Data: ',resData);
-
-        storeToken(resData.token)
-
-        nav('/');
+        response.json().then(userInfo =>{
+          console.log('userInfo Token: ', userInfo.token)
+          storeToken(userInfo.token)  
+          nav('/');
+        })
       } else {
         console.error('Error while login please check you email and password', response.statusText);
       }

@@ -13,12 +13,13 @@ const blogSchema = new Schema({
     },
     image:{
         type: String,
-        required: true
     },
-    user:{
+    author:{
         type: String,
-        required: true
     }
-})
+},
+{
+    timestamps: true, 
+  })
 
 export default mongoose.model('Blogs', blogSchema)

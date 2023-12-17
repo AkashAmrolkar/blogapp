@@ -65,8 +65,8 @@ export const login = async (req, res, next) => {
 
         if (user && isPasswordCorrect) {
             // Generate web tokens
-            const token = jwt.sign({ userId: user._id, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
-            res.json({ message: 'user loggedin successfully', token });
+            const token = jwt.sign({ userId: user._id,userName: user.firstname, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
+            res.json({ message: 'user loggedin successfully', token, userName: user.firstname });
             
         } else {
             return res.status(404).json({message: "Wrong Password"})
@@ -76,22 +76,3 @@ export const login = async (req, res, next) => {
     }
 
 }
-
-export const verifyToken = (req, res, next)=>{
-    const authHeader = req.header('Authorization');
-    if(authHeader){
-        //const token = authHeader.split(" ")[1];
-        jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-            if(err){
-                return res.status(403).json('Token is not valid')
-            }
-
-            req.userId = decoded.userId;
-            req.email = decoded.email;
-            next()
-        })
-    } else{
-        res.status(401).json("you are not authenticated")
-    }
-}
-

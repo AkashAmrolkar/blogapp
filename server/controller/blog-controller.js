@@ -14,13 +14,12 @@ export const getAllBlogs = async(req, res, next)=>{
 }
 
 export const addBlog = async(req, res, next) => {
-    const {title, description, image, user} = req.body
-
+    const {title, description} = req.body
+    const author = req.userName
     const newBlog = new Blogs({
         title,
-        description, 
-        image, 
-        user,
+        description,
+        author,
     })
     try{
        await newBlog.save()

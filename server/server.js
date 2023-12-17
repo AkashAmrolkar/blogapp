@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import  cors from 'cors'
 import dotenv from 'dotenv'
 import userRoute from "./routes/user-routes.js";
+import blogRouter from "./routes/blog-routes.js";
 dotenv.config();
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(cors({
     origin: 'http://localhost:5173',
 }));
 app.use('/api/users', userRoute)
+app.use('/api/blogs', blogRouter)
 
 const mongoUrl = process.env.MONGODB_URL;
 const port = process.env.PORT || 8000;
