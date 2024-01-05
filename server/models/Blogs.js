@@ -11,10 +11,7 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
-    image:{
-        type: String,
-    },
-    author:{
+    images:{
         type: String,
     }
 },

@@ -1,52 +1,63 @@
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { useState } from 'react'
+import axios from 'axios'
 import { useAuth } from '../store/Auth';
 
 const CreatePost = () => {
     const{token} = useAuth()
     console.log(token)
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
 
-  const handlePostSubmit = async () => {
-    try {
-      const response = await fetch('/api/blogs/create-post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`,
-        },
-        body: JSON.stringify({ title, description }),
-      });
-
-      if (response.ok) {
-        console.log('Post created successfully!');
-        // Add any additional logic you need after successful post creation
-      } else {
-        console.error('Failed to create post');
-      }
-    } catch (error) {
-      console.error('Error:', error);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [images, setImages] = useState(null);
+    
+    //submit the form
+    const submitForm = async (e) =>{
+        try {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('images', images);
+      
+            const res = await axios.post('/api/blogs/create-post', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              }
+            });
+      
+            console.log(res.data); // Response with uploaded file paths
+            
+          } catch (err) {
+            console.error(err);
+          }
     }
-  };
-
+    console.log(images)
   return (
-    <div>
-      <h2>Create a Post</h2>
-      <form>
-        <label>Title:</label>
-        <input type="text" value={title} name="title" onChange={(e) => setTitle(e.target.value)} />
-        <br />
-        <label>Content:</label>
-        <ReactQuill theme="snow" name="description" value={description} onChange={setDescription} />
-        <br />
-        <button type="button" onClick={handlePostSubmit}>
-          Post
-        </button>
-      </form>
-    </div>
-  );
-};
+   <>
+     <div className="container custom_class">
+        <h2 className="signup_title ">CREATE Post</h2>
+        <form className=" col-sm-6 offset-3 pt-5 signup_form " enctype="multipart/form-data" onSubmit={submitForm}>
+            
+            <div className="form-outline mb-4">
+                <input onChange={(e)=>setTitle(e.target.value)} type="text" id="form4Example1" className="form-control"  value={title}/>
+                <label className="form-label" htmlFor="form4Example1">Title</label>
+            </div>
 
-export default CreatePost;
+            
+            <div className="form-outline mb-4">
+                <textarea  onChange={(e)=>setDescription(e.target.value)}   type="text" id="form4Example2" className="form-control"  value={description}/>
+                <label className="form-label" htmlFor="form4Example2">Description </label>
+            </div>
+
+            <div className="form-outline mb-4">
+                <input onChange={(e) => setImages(e.target.files[0])}  type="file" id="formupload" name="images" className="form-control"  />
+                <label className="form-label" htmlFor="form4Example2">Image</label>
+            </div>
+            <button  type="submit" className="btn btn-primary btn-block mb-4">Create Post</button>
+            
+         </form>
+    </div> 
+   </>
+  )
+}
+
+export default CreatePost
