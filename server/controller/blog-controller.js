@@ -20,16 +20,11 @@ export const addBlog = async(req, res, next) => {
 
     try {
         const { title, description } = req.body;
-        const postImgs = req.files?.images?.path
+        const postImgs = req.files?.images[0]?.path
         console.log('Post Image', postImgs)
 
         const thumb = await uploadOnCloudinary(postImgs)
-        //const images = await req.file.path; // Assuming Multer has uploaded files to Cloudinary
-        //console.log('Thumb: ', thumb)
-        // if(thumb){
-        //     res.status(200).json({message: "uploaded", thumb})
-        // }
-    
+        console.log(thumb)
         const newPost = new Blogs({
           title,
           description,
@@ -37,7 +32,9 @@ export const addBlog = async(req, res, next) => {
         });
     
         const savedPost = await newPost.save();
-        res.json(savedPost);
+        //return res.status(201).json({ users })
+
+        return res.status(200).json({message: 'Post Created successfully..!', savedPost})
       } catch (err) {
         console.log(err)
       }

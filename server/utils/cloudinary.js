@@ -13,7 +13,9 @@ cloudinary.config({
        const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto"
         })
-        return response.secure_url;
+        
+       fs.unlinkSync(localFilePath)
+       return response.secure_url;
     } catch (error) {
         fs.unlinkSync(localFilePath) //remove the locally saved temporary file
         return null

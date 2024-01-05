@@ -15,8 +15,8 @@ const CreatePost = () => {
         try {
             const formData = new FormData();
             formData.append('title', title);
-            formData.append('description', description);
             formData.append('images', images);
+            formData.append('description', description);
       
             const res = await axios.post('/api/blogs/create-post', formData, {
               headers: {
@@ -35,7 +35,7 @@ const CreatePost = () => {
    <>
      <div className="container custom_class">
         <h2 className="signup_title ">CREATE Post</h2>
-        <form className=" col-sm-6 offset-3 pt-5 signup_form " enctype="multipart/form-data" onSubmit={submitForm}>
+        <form className=" col-sm-6 offset-3 pt-5 signup_form " encType="multipart/form-data" onSubmit={submitForm}>
             
             <div className="form-outline mb-4">
                 <input onChange={(e)=>setTitle(e.target.value)} type="text" id="form4Example1" className="form-control"  value={title}/>
