@@ -1,6 +1,7 @@
 import Blogs from "../models/Blogs.js";
 import cloudinary from 'cloudinary'
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import users from "../models/users.js";
 
 
 export const getAllBlogs = async(req, res, next)=>{
@@ -19,52 +20,30 @@ export const getAllBlogs = async(req, res, next)=>{
 export const addBlog = async(req, res, next) => {
 
     try {
-        const { title, description } = req.body;
+        console.log(req.body)
+        const { title, description, userId, category } = req.body;
         const postImgs = req.files?.images[0]?.path
-        console.log('Post Image', postImgs)
-
+        //console.log('Post Image', postImgs)
+        const existuser = await users.findById(userId)
+        const author = existuser.firstname;
         const thumb = await uploadOnCloudinary(postImgs)
     
         const newPost = new Blogs({
-          title,
-          description,
+          title,    
+          category,
+          description,          
+          author,
           images: thumb,
         });
     
-        const savedPost = await newPost.save();
-        //return res.status(201).json({ users })
+        const savedPost = await newPost.save()
+        await users.findByIdAndUpdate(userId, { $push: { blogs: savedPost._id } });
+
 
         return res.json({message: 'Post Created successfully..!', savedPost})
       } catch (err) {
         console.log(err)
       }
-
-    // try {
-    //     const{title, description} = req.body
-    //     await cloudinary.v2.uploader.upload(req.images, function(err, result){
-    //         if(err){
-    //             res.status(404).json({message: "not Uploaded"})
-    //         }
-    //         imgUrl = result.secure_url;
-    //         imgId = result.public_id
-    //     })
-    //     const newBlog = new Blogs({
-    //         title,
-    //         description,
-    //         images: {
-    //             'img_url': imgUrl,
-    //             'public_id': imgId
-    //         }
-    //     })
-    //     if(newBlog){
-    //         newBlog.save()
-    //     } else{
-    //         console.log('not saved')
-    //     }
-       
-    // } catch (error) {
-    //     console.log(error)
-    // }
 }
 
 export const updateBlog = async(req, res, next) => {

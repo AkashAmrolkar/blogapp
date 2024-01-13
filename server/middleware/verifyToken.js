@@ -1,20 +1,22 @@
-
 import jwt from 'jsonwebtoken'
-export const verifyToken = (req, res, next)=>{
-    const authHeader = req.header('Authorization');
-    if(authHeader){
-        const token = authHeader;
-        jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-            if(err){
-                return res.status(403).json('Token is not valid')
+import dotenv from 'dotenv';
+dotenv.config();
+export const verifyToken = async(req, res, next) => {
+    const token = req.headers.authorization;
+    if(!token || !token.startsWith('Bearer ')){
+        return res.status(404).json(
+            {
+                message: "Token Missing..!"
             }
-
-            req.userId = decoded.userId;
-            req.userName = decoded.userName;
-            req.email = decoded.email;
-            next()
-        })
-    } else{
-        res.status(401).json("you are not authenticated")
+        )
     }
+    const tokenValue = token.split(' ')[1];
+    jwt.verify(tokenValue, process.env.SECRET_KEY, (err, decoded)=>{
+        if (err) {
+            return res.status(401).json({ message: 'Unauthorized: Invalid token.' });
+        }
+
+        req.user = decoded;
+        next();
+    })
 }

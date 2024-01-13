@@ -1,6 +1,5 @@
 import express from "express";
 import { addBlog, deleteBlog, getAllBlogs, updateBlog } from "../controller/blog-controller.js";
-import { verifyToken } from "../middleware/verifyToken.js";
 import {upload} from '../middleware/multer.js'
 const blogRouter = express.Router();
 

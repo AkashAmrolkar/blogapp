@@ -7,13 +7,17 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    category:{
+        type: String,
+        required: true
+    },
     description:{
         type: String,
         required: true
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        required: true
     },
     images:{
         type: String // Assuming you store image URLs as strings

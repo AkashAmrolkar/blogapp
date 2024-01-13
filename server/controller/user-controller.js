@@ -53,6 +53,7 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
     let user;
     try {
+        
         user = await users.findOne({ email });
         const isPasswordCorrect = bcrypt.compareSync(password, user.password)
         if (!isPasswordCorrect) {
@@ -73,6 +74,24 @@ export const login = async (req, res, next) => {
         }
     } catch (error) {
         console.log(error)
+    }
+
+}
+
+export const userProfile = async(req, res) => {
+    try {
+        const currentUser = await users.findById(req.user.userId).select('-password');
+        if(!currentUser){
+            return res.status(401).json(
+                {
+                    message: "User not found..!"
+                }
+            )
+        }
+        res.json(currentUser);
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({message: "Error fetching user data."})
     }
 
 }

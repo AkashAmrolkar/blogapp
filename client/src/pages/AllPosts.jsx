@@ -48,7 +48,7 @@ const postCreatedDate = (date) =>{
 
                   <div className='flex gap-3 my-3'> 
                     <FaUser />
-                    <p className='text-gray-500 text-sm font-medium'>{postCreatedDate(post.createdAt)}</p>
+                    <p className='text-gray-500 text-sm font-medium'>{post.author}</p>
                   </div>  
                 </div>
               </div>
