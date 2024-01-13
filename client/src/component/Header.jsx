@@ -3,17 +3,22 @@ import { useAuth } from "../store/Auth"
 
 const Header = () => {
   const {isLoggedIn} = useAuth();
+  console.log("Is LoggedIn", isLoggedIn)
   return (
     <div>
       <nav className="bg-blue-500 p-4">
         <div className="container mx-auto flex justify-between items-center">
         <Link to={'/'} className="text-white hover:text-blue-300 text-2xl font-bold">Your Logo</Link>
           <div className="space-x-4">
-            <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">Home</Link>
-            <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">About</Link>
-            <Link to={'/#'} className="text-white font-semibold hover:text-blue-300">Contact</Link>
+            <Link to={'/#'} className="nav-link text-white font-semibold hover:text-blue-300">Home</Link>
+            <Link to={'/posts'} className="nav-link text-white font-semibold hover:text-blue-300">Posts</Link>
+            <Link to={'/#'} className="nav-link text-white font-semibold hover:text-blue-300">Contact</Link>
             {
-              isLoggedIn? <Link to={'/logout'} className="text-white font-semibold hover:text-blue-300">Logout</Link> : <Link to={'/login'} className="text-white font-semibold hover:text-blue-300">Login</Link>
+              isLoggedIn && <><Link to={'/create-post'} className="nav-link text-white font-semibold hover:text-blue-300">Create Post</Link> <Link to={'/logout'} className="nav-link text-white font-semibold hover:text-blue-300">Logout</Link></>
+
+            }
+            {
+              !isLoggedIn && <><Link to={'/register'} className="nav-link text-white font-semibold hover:text-blue-300">Register</Link><Link to={'/login'} className="nav-link text-white font-semibold hover:text-blue-300">Login</Link></>
             }
           </div>
         </div>

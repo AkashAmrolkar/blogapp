@@ -5,7 +5,7 @@ import {upload} from '../middleware/multer.js'
 const blogRouter = express.Router();
 
 blogRouter.get('/', getAllBlogs);
-blogRouter.post('/create-post', upload.fields([{ name: 'images', maxCount: 1 }]) , addBlog);
+blogRouter.post('/create-post', upload.fields([{name: 'images', maxCount: 1}]) , addBlog);
 blogRouter.put('/:id', updateBlog);
 blogRouter.delete('/:id', deleteBlog)
 

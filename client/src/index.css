@@ -6,3 +6,9 @@ body{
     font-family: 'Inter', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
+.nav-link:last-child{
+    color: #3b82f6;
+    background-color: #fff;
+    padding: 10px 25px;
+    border-radius: 25px;
+}

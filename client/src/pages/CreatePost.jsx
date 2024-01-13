@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 import axios from 'axios'
 import { useAuth } from '../store/Auth';
 
 const CreatePost = () => {
-    const{token} = useAuth()
-    console.log(token)
+  const{token} = useAuth()
+  console.log(token)
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -23,14 +25,10 @@ const CreatePost = () => {
                 'Content-Type': 'multipart/form-data',
               }
             });
-      
-            console.log(res.data); // Response with uploaded file paths
-            
           } catch (err) {
             console.error(err);
           }
     }
-    console.log(images)
   return (
    <>
      <div className="container custom_class">
@@ -44,8 +42,7 @@ const CreatePost = () => {
 
             
             <div className="form-outline mb-4">
-                <textarea  onChange={(e)=>setDescription(e.target.value)}   type="text" id="form4Example2" className="form-control"  value={description}/>
-                <label className="form-label" htmlFor="form4Example2">Description </label>
+                <ReactQuill theme="snow" value={description} onChange={setDescription} />
             </div>
 
             <div className="form-outline mb-4">

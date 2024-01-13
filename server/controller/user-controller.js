@@ -65,7 +65,7 @@ export const login = async (req, res, next) => {
 
         if (user && isPasswordCorrect) {
             // Generate web tokens
-            const token = jwt.sign({ userId: user._id,userName: user.firstname, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id,userName: user.firstname, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '24h' });
             res.json({ message: 'user loggedin successfully', token, userName: user.firstname });
             
         } else {

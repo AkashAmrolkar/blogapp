@@ -24,7 +24,7 @@ export const addBlog = async(req, res, next) => {
         console.log('Post Image', postImgs)
 
         const thumb = await uploadOnCloudinary(postImgs)
-        console.log(thumb)
+    
         const newPost = new Blogs({
           title,
           description,
@@ -34,7 +34,7 @@ export const addBlog = async(req, res, next) => {
         const savedPost = await newPost.save();
         //return res.status(201).json({ users })
 
-        return res.status(200).json({message: 'Post Created successfully..!', savedPost})
+        return res.json({message: 'Post Created successfully..!', savedPost})
       } catch (err) {
         console.log(err)
       }

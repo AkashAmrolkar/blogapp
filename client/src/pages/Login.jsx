@@ -31,7 +31,7 @@ const Login = () => {
       
       if (response.status === 200) {
         response.json().then(userInfo =>{
-          console.log('userInfo Token: ', userInfo.token)
+          //console.log('userInfo Token: ', userInfo.token)
           storeToken(userInfo.token)  
           nav('/');
         })

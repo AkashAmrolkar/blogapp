@@ -11,9 +11,13 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     images:{
-        type: String,
-    }
+        type: String // Assuming you store image URLs as strings
+      },
 },
 {
     timestamps: true, 
