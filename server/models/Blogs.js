@@ -19,6 +19,10 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
+    authorId: {
+        type: String,
+        required: true
+    },
     images:{
         type: String // Assuming you store image URLs as strings
       },

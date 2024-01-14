@@ -5,6 +5,7 @@ import Home from "../pages/Home"
 import Logout from "../pages/Logout"
 import CreatePost from "../pages/CreatePost"
 import AllPosts from "../pages/AllPosts"
+import SinglePost from "../pages/SinglePost"
 
 const PageRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const PageRoutes = () => {
         <Route path="/logout" element = {<Logout />} />
         <Route path="/create-post" element = {<CreatePost />} />
         <Route path="/posts" element= {<AllPosts />} />
+        <Route path="/post/:id" element= {<SinglePost />} />
     </Routes>
   )
 }

@@ -31,7 +31,8 @@ export const addBlog = async(req, res, next) => {
         const newPost = new Blogs({
           title,    
           category,
-          description,          
+          description,
+          authorId: userId,          
           author,
           images: thumb,
         });
@@ -66,17 +67,17 @@ export const updateBlog = async(req, res, next) => {
 
 export const getByID = async(req, res, next) => {
     const id = req.params.id;
-    let blog;
     try{
-        blog = await Blogs.findById(id)
+        const blog = await Blogs.findById(id);
+        if(!blog){
+            return res.status(404).json({message: "Post not found"})
+        }
+        return res.status(200).json({blog})
     } catch(err){
         return console.log(err)
 
     }
-    if(!blog){
-        return res.status(404).json({message: "Post not found"})
-    }
-    return res.status(200).json({blog})
+    
 }
 
 export const deleteBlog = async(req, res, next)=>{

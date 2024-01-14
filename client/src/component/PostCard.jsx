@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import FormatDate from './FormatDate';
 
 const PostCard = ({post}) => {
     const postContent = (desc) => {
@@ -30,8 +31,8 @@ const PostCard = ({post}) => {
             <NavLink to={`/post/${post._id}`}><h1 className='font-bold text-[#302D55] text-3xl mb-4 hover:opacity-80'>{post.title}</h1></NavLink> 
             <div className='flex gap-5 mb-4 items-center'>
                 <img src='https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/12/avatar-1.webp' className=' rounded-full'  height='35' width='35' alt={post.author} />
-                <NavLink to={`/post/${post._id}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{post.author}</p></NavLink>
-                <div className='text-[#4d6385]'>{postCreatedDate(post.createdAt)}</div>
+                <NavLink to={`/post/${post.authorId}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{post.author}</p></NavLink>
+                <div className='text-[#4d6385]'><FormatDate date={post.createdAt} /></div>
             </div>
             <div className='post_excerpt mb-6'>
                 <p className='text-[#002050] text-base'> {postContent(post.description)+'...'} </p>
