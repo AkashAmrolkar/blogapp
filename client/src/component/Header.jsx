@@ -5,8 +5,8 @@ const Header = () => {
   const {isLoggedIn} = useAuth();
   console.log("Is LoggedIn", isLoggedIn)
   return (
-    <div>
-      <nav className="bg-blue-500 p-4">
+    <div className="bg-blue-500 p-4">
+      <nav className="container mx-auto">
         <div className="container mx-auto flex justify-between items-center">
         <Link to={'/'} className="text-white hover:text-blue-300 text-2xl font-bold">Your Logo</Link>
           <div className="space-x-4">

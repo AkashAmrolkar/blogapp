@@ -9,28 +9,9 @@ const CreatePost = () => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('');
     const [images, setImages] = useState(null);
-    const [userId, setUserId] = useState(null)
     
-    const {token} = useAuth()
-    useEffect(()=>{
-      if(token){
-        fetch('/api/users/user', {
-          method:'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          setUserId(data._id);
-        })
-        .catch(error => console.error('Error fetching user data:', error));
-      }
-    }, [])
+    const {userId} = useAuth()
     
-    //submit the form
     const submitForm = async (e) =>{
         try {
             const formData = new FormData();
