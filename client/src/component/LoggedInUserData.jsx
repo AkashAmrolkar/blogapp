@@ -8,11 +8,11 @@ const LoggedInUserData = ({author}) => {
         <h2 className=' text-black font-bold text-2xl mb-5'>About Me</h2>
         <div className=' flex gap-5 items-center mb-5'>
             <div>
-                <img src='https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/12/avatar-1.webp' className=' rounded-full h-[100px] w-[100px]' alt="" height="" width="" />
+              <NavLink to={`/authors/${author?._id}`}><img src='https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/12/avatar-1.webp' className=' rounded-full h-[100px] w-[100px]' alt="" height="" width="" /> </NavLink>
             </div>
             <div className=''>
-                <p className='font-bold'>{author?.firstname}</p>
-                <p className=' text-sm text-[#002050]'>Founder</p>
+              <NavLink to={`/authors/${author?._id}`}><p className='font-bold'>{author?.firstname}</p></NavLink>  
+              <p className=' text-sm text-[#002050]'>Founder</p>
             </div>
         </div>
         <div class="text-base text-[#002050] mb-5">Hello! My name is Adriana Martins working from Chile. I create some Ghost and Wordpress themes for differents markets, also, i offer live support via our ticket system.</div>
