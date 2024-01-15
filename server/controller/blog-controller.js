@@ -32,8 +32,7 @@ export const addBlog = async(req, res, next) => {
           title,    
           category,
           description,
-          authorId: userId,          
-          author,
+          author: userId,
           images: thumb,
         });
     
@@ -68,11 +67,11 @@ export const updateBlog = async(req, res, next) => {
 export const getByID = async(req, res, next) => {
     const id = req.params.id;
     try{
-        const blog = await Blogs.findById(id);
+        const blog = await Blogs.findById(id).populate('author');
         if(!blog){
             return res.status(404).json({message: "Post not found"})
         }
-        return res.status(200).json({blog})
+        return res.status(200).json(blog)
     } catch(err){
         return console.log(err)
 

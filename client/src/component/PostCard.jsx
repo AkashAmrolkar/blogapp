@@ -7,20 +7,7 @@ const PostCard = ({post}) => {
         const maxLength = 250
         return desc.substring(0, maxLength);
     }
-      
-    const postCreatedDate = (date) =>{
-        const newDate = new Date(date)
-        const yyyy = newDate.getFullYear();
-        let mm = newDate.toLocaleString('default', { month: 'long' });
-        if(mm<10){
-         mm = '0'+mm
-        }
-        let dd = newDate.getDate();
-        if(dd<10){
-         dd = '0'+dd
-        }
-        return `${mm} ${dd}, ${yyyy}`;
-       }
+    
   return (
     <div className='grid grid-cols-12 mb-16 gap-8'>
         <div className=' col-span-4'>
@@ -37,7 +24,7 @@ const PostCard = ({post}) => {
             <div className='post_excerpt mb-6'>
                 <p className='text-[#002050] text-base'> {postContent(post.description)+'...'} </p>
             </div>            
-            <NavLink to={`/post/${post._id}`} className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Read more</NavLink>
+            <NavLink to={`/posts/${post._id}`} className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Read more</NavLink>
         </div>
     </div>
   )

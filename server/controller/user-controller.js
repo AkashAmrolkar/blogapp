@@ -95,3 +95,23 @@ export const userProfile = async(req, res) => {
     }
 
 }
+
+export const singleUser = async(req, res) => {
+    try {
+        const authID = req.params.id;
+        console.log(authID);
+        const currentUser = await users.findById(authID).select('-password');
+        if(!currentUser){
+            return res.status(401).json(
+                {
+                    message: "User not found..!"
+                }
+            )
+        }
+        res.json(currentUser);
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({message: "Error fetching user data."})
+    }
+
+}

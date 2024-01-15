@@ -16,12 +16,8 @@ const blogSchema = new Schema({
         required: true
     },
     author: {
-        type: String,
-        required: true
-    },
-    authorId: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     },
     images:{
         type: String // Assuming you store image URLs as strings

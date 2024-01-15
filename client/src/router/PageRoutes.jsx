@@ -16,7 +16,7 @@ const PageRoutes = () => {
         <Route path="/logout" element = {<Logout />} />
         <Route path="/create-post" element = {<CreatePost />} />
         <Route path="/posts" element= {<AllPosts />} />
-        <Route path="/post/:id" element= {<SinglePost />} />
+        <Route path="/posts/:postId" element= {<SinglePost />} />
     </Routes>
   )
 }
