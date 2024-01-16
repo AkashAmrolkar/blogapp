@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import userRoute from "./routes/user-routes.js";
 import blogRouter from "./routes/blog-routes.js";
 import cloudinary from 'cloudinary'
+import  commentRoutes  from "./routes/comment-routes.js";
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors({
 }));
 app.use('/api/users', userRoute)
 app.use('/api/blogs', blogRouter)
+app.use('/api/comments', commentRoutes)
 
 
 const mongoUrl = process.env.MONGODB_URL;
