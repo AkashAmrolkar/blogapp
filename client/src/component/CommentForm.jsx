@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import {useParams} from 'react-router-dom'
-import {useAuth} from '../store/Auth'
+import { useAuth } from "../store/Auth"
 const CommentForm = () => {
     const {postId} = useParams()
     const {userId} = useAuth()
     const [text, setText] = useState('')
+    //console.log("userID ", userId);
+    //console.log("postId", postId)
+
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
@@ -28,7 +31,7 @@ const CommentForm = () => {
             console.log('New comment created:', data);
             // Optionally, you can update the UI or perform other actions.
           } catch (error) {
-            
+            console.log(error)
         }
         
     }

@@ -11,7 +11,7 @@ const CreatePost = () => {
     const [images, setImages] = useState(null);
     
     const {userId} = useAuth()
-    
+    console.log("UID",userId)
     const submitForm = async (e) =>{
         try {
             const formData = new FormData();
