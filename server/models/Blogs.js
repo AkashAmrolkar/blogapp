@@ -21,7 +21,11 @@ const blogSchema = new Schema({
     },
     images:{
         type: String // Assuming you store image URLs as strings
-      },
+    },
+    comments:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }
 },
 {
     timestamps: true, 
