@@ -8,12 +8,12 @@ export const addComment = async(req, res) => {
     try {
         const newComment = new Comment({
             comment: text,
-            postId,
             user: author
         })
         await newComment.save()
-
+        console.log(newComment)
         const post = await Blogs.findById(postId)
+        console.log(post)
         post.comments.push(newComment._id)
 
         await post.save()

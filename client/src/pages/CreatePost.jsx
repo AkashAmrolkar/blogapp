@@ -9,23 +9,28 @@ const CreatePost = () => {
     const [category, setCategory] = useState('')
     const [description, setDescription] = useState('');
     const [images, setImages] = useState(null);
-    
-    const {userId} = useAuth()
-    console.log("UID",userId)
-    const submitForm = async (e) =>{
-        try {
-            const formData = new FormData();
+
+    const formData = new FormData();
             formData.append('title', title);
             formData.append('images', images);
             formData.append('category', category);
             formData.append('description', description);
-            formData.append('userId', userId);
-      
+            //formData.append('userId', userId);
+            console.log(formData)
+    
+    const {userId} = useAuth()
+    //console.log("UID",userId)
+    //console.log(title, category, description, images, userId)
+    const submitForm = async (e) =>{
+      e.prventDefault();
+        try {
+            
             const res = await axios.post('/api/blogs/create-post', formData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               }
             });
+            console.log(res)
           } catch (err) {
             console.error(err);
           }

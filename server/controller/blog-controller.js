@@ -25,7 +25,7 @@ export const addBlog = async(req, res, next) => {
         const postImgs = req.files?.images[0]?.path
         //console.log('Post Image', postImgs)
         const existuser = await users.findById(userId)
-        const author = existuser.firstname;
+        //const author = existuser.firstname;
         const thumb = await uploadOnCloudinary(postImgs)
     
         const newPost = new Blogs({

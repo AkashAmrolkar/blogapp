@@ -2,11 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    firstname: {
-        type: String,
-        required: true
-    },
-    lastname: {
+    fullname: {
         type: String,
         required: true
     },
@@ -18,7 +14,11 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        minlength: 8
+        minlength: 6
+    },
+    profile:{
+        type: String,
+        default: 'https://res.cloudinary.com/akashamrolkar/image/upload/v1705523222/mpim7fmfnye4ujpxmrgc.jpg'
     },
     blogs:[
         {

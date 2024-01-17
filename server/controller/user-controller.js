@@ -3,6 +3,7 @@
 import users from "../models/users.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 
 export const getAllUser = async (req, resp, next) => {
@@ -20,7 +21,17 @@ export const getAllUser = async (req, resp, next) => {
 
 
 export const register = async (req, res, next) => {
-    const { firstname, lastname, email, password } = req.body;
+    // console.log("body",req.body)
+    const { fullname, email, password } = req.body;
+    console.log(fullname, email, password)
+    let profileImgPath = '';
+    if(req.files?.profile[0]?.path){
+        const profieImage = req.files?.profile?.path;
+        profileImgPath = await uploadOnCloudinary(profieImage)
+
+    }
+    console.log(profileImgPath)
+
     let existingUser;
     try {
         existingUser = await users.findOne({ email });
@@ -35,11 +46,12 @@ export const register = async (req, res, next) => {
     const hashedPass = bcrypt.hashSync(password)
 
     const newUser = new users({
-        firstname,
-        lastname,
+        fullname,
         email,
+        profile: profileImgPath,
         password: hashedPass,
     })
+    console.log("newUser", newUser)
     try {
         newUser.save();
     } catch (error) {
