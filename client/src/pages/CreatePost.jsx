@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css';
 import axios from 'axios'
 import { useAuth } from '../store/Auth';
+import ReactQuillEditor from '../component/ReactQuillEditor';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
@@ -10,17 +9,27 @@ const CreatePost = () => {
     const [description, setDescription] = useState('');
     const [images, setImages] = useState(null);
 
+    const modules = {
+      toolbar: [
+        [{ header: [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link', 'image', 'video'],
+        ['clean'],
+      ],
+      'emoji-toolbar': true,
+      'emoji-textarea': false,
+    };
+
     const formData = new FormData();
             formData.append('title', title);
             formData.append('images', images);
             formData.append('category', category);
             formData.append('description', description);
-            //formData.append('userId', userId);
             console.log(formData)
     
-    const {userId} = useAuth()
-    //console.log("UID",userId)
-    //console.log(title, category, description, images, userId)
+    const {userId, isLoggedIn} = useAuth()
+    console.log("Is Logged: ", isLoggedIn)
     const submitForm = async (e) =>{
       e.prventDefault();
         try {
@@ -57,13 +66,12 @@ const CreatePost = () => {
                 <option value="entertainment">Entertainment</option>
                 <option value="science">Science</option>
                 <option value="lifestyle">Lifestyle</option>
-                {/* Add more options as needed */}
               </select>
             </div>
 
             
             <div className="form-outline mb-4">
-                <ReactQuill theme="snow" value={description} onChange={setDescription} />
+                <ReactQuillEditor theme="snow" modules={modules} value={description} onChange={setDescription}/>
             </div>
 
             <div className="form-outline mb-4">

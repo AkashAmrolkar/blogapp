@@ -21,43 +21,54 @@ export const getAllUser = async (req, resp, next) => {
 
 
 export const register = async (req, res, next) => {
-    // console.log("body",req.body)
-    const { fullname, email, password } = req.body;
-    console.log(fullname, email, password)
-    let profileImgPath = '';
-    if(req.files?.profile[0]?.path){
-        const profieImage = req.files?.profile?.path;
-        profileImgPath = await uploadOnCloudinary(profieImage)
 
-    }
-    console.log(profileImgPath)
-
-    let existingUser;
     try {
-        existingUser = await users.findOne({ email });
-    } catch (error) {
-        console.log(error)
-    }
+        const { fullname, email, password } = req.body;
+        console.log(fullname, email, password)
+        console.log("files",req.file)
+        let profileImgPath;
+        if (req.file) {
+            const profileImageBuffer = req.file?.path;
+            console.log(profileImageBuffer)
+            profileImgPath = await uploadOnCloudinary(profileImageBuffer);
+        }
+        let existingUser = await users.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User Already Exist" });
+        }
+        if(!password){
+            return res.status(404).json({message: "Password and Confirm Password mismatched..!"})
+        }
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPass = bcrypt.hashSync(password, salt)
 
-    if (existingUser) {
-        return res.status(400).json({ message: "User Already Exist" });
-    }
+        let newUser
+        if(profileImgPath){
+            newUser = new users({
+                fullname,
+                email,
+                profile: profileImgPath,
+                password: hashedPass,
+            })
+        } else{
+            newUser = new users({
+                fullname,
+                email,
+                //profile: profileImgPath,
+                password: hashedPass,
+            })
+        }
+        
 
-    const hashedPass = bcrypt.hashSync(password)
-
-    const newUser = new users({
-        fullname,
-        email,
-        profile: profileImgPath,
-        password: hashedPass,
-    })
-    console.log("newUser", newUser)
-    try {
         newUser.save();
+
+        return res.status(201).json({ users })
+
     } catch (error) {
-        console.log(error)
+        console.log(error)   
     }
-    return res.status(201).json({ users })
+
 }
 
 

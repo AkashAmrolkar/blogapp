@@ -1,25 +1,26 @@
 import { v2 as cloudinary } from "cloudinary";
+import dotenv from 'dotenv'
+dotenv.config()
 import fs from 'fs'
           
 cloudinary.config({ 
-  cloud_name: 'akashamrolkar', 
-  api_key: '666295476659841', 
-  api_secret: 'wh1Vm9oi2Tf8q3eJG7EmEVVjIEc' 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
 });
 
-  export const uploadOnCloudinary = async(localFilePath) => {
-    console.log(localFilePath)
-    try {
-        if(!localFilePath) return null
-       const response = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "auto"
-        })
-        
-       fs.unlinkSync(localFilePath)
-       return response.secure_url;
-    } catch (error) {
-        fs.unlinkSync(localFilePath) //remove the locally saved temporary file
-        return null
+export const uploadOnCloudinary = async (localFilePath) => {
+  try {
+    if(!localFilePath){
+      return null
     }
-    
+    const cloudinaryResponse = await cloudinary.uploader.upload(localFilePath, {resource_type: 'auto'})
+    //console.log("File uploaded on cloudinary", cloudinaryResponse.url)  
+    return cloudinaryResponse.url;
+    fs.unlinkSync(localFilePath)
+  } catch (error) {
+    fs.unlinkSync(localFilePath)
+    console.error('Cloudinary Service Error:', error);
+    return null;
   }
+};

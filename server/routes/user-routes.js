@@ -6,7 +6,7 @@ import {verifyToken} from '../middleware/verifyToken.js'
 const userRoute = express.Router()
 
 userRoute.get('/', getAllUser)
-userRoute.post('/register',upload.fields([{name: 'profile', maxCount: 1}]), register)
+userRoute.post('/register', upload.single('profile'), register)
 userRoute.post('/login', login)
 
 userRoute.get('/user', verifyToken, userProfile)
