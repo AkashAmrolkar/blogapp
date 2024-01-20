@@ -1,86 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import { useAuth } from '../store/Auth';
-import ReactQuillEditor from '../component/ReactQuillEditor';
 
-const CreatePost = () => {
-    const [title, setTitle] = useState('');
-    const [category, setCategory] = useState('')
-    const [description, setDescription] = useState('');
-    const [images, setImages] = useState(null);
+import Modal from '../component/Modal'
+import CreatePostForm from '../component/CreatePostForm';
 
-    const modules = {
-      toolbar: [
-        [{ header: [1, 2, false] }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image', 'video'],
-        ['clean'],
-      ],
-      'emoji-toolbar': true,
-      'emoji-textarea': false,
-    };
+const CreatePost = () => {  
+  
+  const {isLoggedIn} = useAuth()
 
-    const formData = new FormData();
-            formData.append('title', title);
-            formData.append('images', images);
-            formData.append('category', category);
-            formData.append('description', description);
-            console.log(formData)
-    
-    const {userId, isLoggedIn} = useAuth()
-    console.log("Is Logged: ", isLoggedIn)
-    const submitForm = async (e) =>{
-      e.prventDefault();
-        try {
-            
-            const res = await axios.post('/api/blogs/create-post', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              }
-            });
-            console.log(res)
-          } catch (err) {
-            console.error(err);
-          }
-    }
   return (
    <>
      <div className="container custom_class">
-        <h2 className="signup_title ">CREATE Post</h2>
-        <form className=" col-sm-6 offset-3 pt-5 signup_form " encType="multipart/form-data" onSubmit={submitForm}>            
-            <div className="form-outline mb-4">
-                <input onChange={(e)=>setTitle(e.target.value)} type="text" id="form4Example1" className="form-control"  value={title}/>
-                <label className="form-label" htmlFor="form4Example1">Title</label>
-            </div>
-            <div>
-              <label htmlFor="mySelect">Select Category:</label>
-              <select id="mySelect" value={category} onChange={(e)=>setCategory(e.target.value)}>
-                <option value="">Select an option</option>
-                <option value="technology">Technology</option>
-                <option value="travel">Travel</option>
-                <option value="fashion">Fashion</option>
-                <option value="finance">Finance</option>
-                <option value="food">Food</option>
-                <option value="sports">Sports</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="science">Science</option>
-                <option value="lifestyle">Lifestyle</option>
-              </select>
-            </div>
-
-            
-            <div className="form-outline mb-4">
-                <ReactQuillEditor theme="snow" modules={modules} value={description} onChange={setDescription}/>
-            </div>
-
-            <div className="form-outline mb-4">
-                <input onChange={(e) => setImages(e.target.files[0])}  type="file" id="formupload" name="images" className="form-control"  />
-                <label className="form-label" htmlFor="form4Example2">Image</label>
-            </div>
-            <button  type="submit" className="btn btn-primary btn-block mb-4">Create Post</button>
-            
-         </form>
+         { 
+          isLoggedIn ? <CreatePostForm /> : <Modal />
+         }
     </div> 
    </>
   )

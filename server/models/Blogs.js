@@ -19,7 +19,7 @@ const blogSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    images:{
+    featured_img:{
         type: String // Assuming you store image URLs as strings
     },
     comments:{

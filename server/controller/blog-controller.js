@@ -17,24 +17,34 @@ export const getAllBlogs = async(req, res, next)=>{
     return res.status(200).json({blogs})
 }
 
-export const addBlog = async(req, res, next) => {
-
+export const addBlog = async(req, res) => {
+    console.log("Hiiii")
     try {
-        console.log(req.body)
-        const { title, description, userId, category } = req.body;
-        const postImgs = req.files?.images[0]?.path
-        //console.log('Post Image', postImgs)
-        const existuser = await users.findById(userId)
-        //const author = existuser.firstname;
-        const thumb = await uploadOnCloudinary(postImgs)
-    
-        const newPost = new Blogs({
-          title,    
-          category,
-          description,
-          author: userId,
-          images: thumb,
-        });
+        //console.log(req.body)
+        const { postTitle, Excerpt, category } = req.body;
+        const userId = req.user.userId
+        console.log("UserId: ", userId)
+
+        let postThumbnail = req.file
+        let newPost
+        if(postThumbnail){
+            const postThumbpath = req.file?.path;
+            const postThumbUrl = await uploadOnCloudinary(postThumbpath)
+            newPost = new Blogs({
+                title: postTitle,    
+                category: category,
+                description: Excerpt,
+                author: userId,
+                featured_img: postThumbUrl
+              });
+        } else{
+            newPost = new Blogs({
+                title: postTitle,    
+                category: category,
+                description: Excerpt
+            });
+        }
+        
     
         const savedPost = await newPost.save()
         await users.findByIdAndUpdate(userId, { $push: { blogs: savedPost._id } });
