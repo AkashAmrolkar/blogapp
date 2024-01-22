@@ -20,12 +20,14 @@ const SinglePost = ({ match }) => {
         };
         fetchPost()
     }, [postId])
+
+    console.log(post)
     
   return (
     <div>
 
         <SinglepostData post={post} />
-        <LoggedInUserData author={post?.author} />
+        <LoggedInUserData author={post?.author} title={"About the Author"}/>
         <CommentForm />
     </div>
   )

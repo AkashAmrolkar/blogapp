@@ -8,9 +8,10 @@ useEffect(()=>{
     return res.json();
   })
   .then((data) => {
-    setPosts(data['blogs']);
+    setPosts(data.blogs);
   });
 },[])
+
 
 const postContent = (desc) => {
   const maxLength = 250
