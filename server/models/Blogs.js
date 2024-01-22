@@ -22,10 +22,18 @@ const blogSchema = new Schema({
     featured_img:{
         type: String // Assuming you store image URLs as strings
     },
-    comments:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }
+    comments:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
+    likes:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
+        }
+    ]
 },
 {
     timestamps: true, 

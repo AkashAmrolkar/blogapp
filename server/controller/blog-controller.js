@@ -1,5 +1,4 @@
 import Blogs from "../models/Blogs.js";
-import cloudinary from 'cloudinary'
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import users from "../models/users.js";
 
@@ -7,7 +6,7 @@ import users from "../models/users.js";
 export const getAllBlogs = async(req, res, next)=>{
     let blogs
     try {
-        blogs = await Blogs.find();
+        blogs = await Blogs.find().sort({ createdAt: -1 }).populate('author', '-password');
     } catch (error) {
         console.log(error)
     }
@@ -18,12 +17,11 @@ export const getAllBlogs = async(req, res, next)=>{
 }
 
 export const addBlog = async(req, res) => {
-    console.log("Hiiii")
     try {
         //console.log(req.body)
         const { postTitle, Excerpt, category } = req.body;
         const userId = req.user.userId
-        console.log("UserId: ", userId)
+        //console.log("UserId: ", userId)
 
         let postThumbnail = req.file
         let newPost
@@ -102,4 +100,20 @@ export const deleteBlog = async(req, res, next)=>{
     }
     return res.status(200).json({message: "Successfully Deleted"})
 
+}
+
+export const postLike = async(req,res) => {
+    const postID = req.params;
+    const userID = req.user.userId;
+    try {
+        const post = await Blogs.findById(postID)
+        if(!post){
+            res.status(404).json({message: "Post not found"})
+        }
+
+        
+    } catch (error) {
+        
+    }
+    
 }

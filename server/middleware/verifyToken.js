@@ -18,7 +18,6 @@ export const verifyToken = async(req, res, next) => {
         }
 
         req.user = decoded;
-        console.log("User Data: ", req.user)
         next();
     })
 }

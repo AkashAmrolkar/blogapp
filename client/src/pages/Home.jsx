@@ -19,8 +19,8 @@ const Home = () => {
   return (
     <div>
       {
-        postData?.map((post, index)=>(
-          <PostCard key={index} post={post} />
+        postData?.map(post =>(
+          <PostCard key={post._id} {...post} />
         ))
       }
     </div>

@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import { useAuth } from "../store/Auth"
 const CommentForm = () => {
     const {postId} = useParams()
-    const {userId} = useAuth()
+    const {token} = useAuth()
     const [text, setText] = useState('')
     //console.log("userID ", userId);
     //console.log("postId", postId)
@@ -15,11 +15,12 @@ const CommentForm = () => {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
               },
               body: JSON.stringify({
                 postId,
                 text,
-                author: userId, // Replace with the actual author ID
+                //author: userId, // Replace with the actual author ID
               }),
             });
       
