@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import LoggedInUserData from '../component/LoggedInUserData'
 import SinglepostData from '../component/SinglepostData'
 import CommentForm from '../component/CommentForm'
+import AuthorData from '../component/AuthorData'
 
 const SinglePost = ({ match }) => {
     const { postId } = useParams();
@@ -27,7 +27,7 @@ const SinglePost = ({ match }) => {
     <div>
 
         <SinglepostData post={post} />
-        <LoggedInUserData author={post?.author} title={"About the Author"}/>
+        <AuthorData author={post?.author} title={"About the Author"}/>
         <CommentForm />
     </div>
   )
