@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import PostCard from '../component/PostCard'
-import { blogs } from '../blogs'
 
 const Home = () => {
 
@@ -15,7 +14,6 @@ const Home = () => {
       setPostData(data['blogs']);
     });
   }, [])
-  console.log(postData)
   return (
     <div>
       {

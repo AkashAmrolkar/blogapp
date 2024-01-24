@@ -3,6 +3,7 @@ import Footer from "../component/Footer"
 import Header from "../component/Header"
 import LoggedInUserData from "../component/LoggedInUserData"
 import PopularArticles from "../component/PopularArticles"
+import RecentPost from "../component/RecentPost"
 import PageRoutes from "../router/PageRoutes"
 import { useAuth } from "../store/Auth"
 
@@ -21,6 +22,7 @@ const Layout = () => {
                 {
                   isLoggedIn && <LoggedInUserData />
                 }
+                <RecentPost />
                 <PopularArticles />
                 <CategoriesSlider />
               </aside>
