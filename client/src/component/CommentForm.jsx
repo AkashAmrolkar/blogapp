@@ -31,6 +31,10 @@ const CommentForm = () => {
             const data = await response.json();
             console.log('New comment created:', data);
             // Optionally, you can update the UI or perform other actions.
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+        
           } catch (error) {
             console.log(error)
         }
@@ -39,12 +43,13 @@ const CommentForm = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-        <label>
-            Comment:
-            <textarea value={text} onChange={(e) => setText(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Add Comment</button>
+          <div className="form_field flex flex-col gap-2 mb-4">
+            <label htmlFor='comment' className=' text-2xl font-semibold'>
+              Leave a Reply
+            </label>
+            <textarea id='comment' className='border border-gray-400 rounded-xl focus:no-underline' rows="5" value={text} onChange={(e) => setText(e.target.value)} />
+          </div>        
+        <button type="submit" className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Add Comment</button>
         </form>
     </div>
   )

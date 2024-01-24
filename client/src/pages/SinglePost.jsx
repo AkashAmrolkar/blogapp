@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import SinglepostData from '../component/SinglepostData'
 import CommentForm from '../component/CommentForm'
 import AuthorData from '../component/AuthorData'
+import ShowComments from '../component/ShowComments'
 
 const SinglePost = ({ match }) => {
     const { postId } = useParams();
@@ -28,6 +29,7 @@ const SinglePost = ({ match }) => {
 
         <SinglepostData post={post} />
         <AuthorData author={post?.author} title={"About the Author"}/>
+        <ShowComments comments = {post?.comments} />
         <CommentForm />
     </div>
   )

@@ -11,6 +11,6 @@ userRoute.post('/login', login)
 
 userRoute.get('/user', verifyToken, userProfile)
 
-userRoute.get('/user/:id',verifyToken, singleUser)
+userRoute.get('/author/:id', singleUser)
 
 export default userRoute;

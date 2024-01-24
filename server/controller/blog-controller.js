@@ -75,7 +75,15 @@ export const updateBlog = async(req, res, next) => {
 export const getByID = async(req, res, next) => {
     const id = req.params.id;
     try{
-        const blog = await Blogs.findById(id).populate('author');
+        const blog = await Blogs.findById(id)
+        .populate('author')
+        .populate({
+        path: 'comments',
+        populate: {
+          path: 'user',
+          select: '-password'
+        },
+      });
         if(!blog){
             return res.status(404).json({message: "Post not found"})
         }

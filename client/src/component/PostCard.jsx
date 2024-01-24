@@ -17,8 +17,8 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
             
             <NavLink to={`/posts/${_id}`}><h1 className='font-bold text-[#302D55] text-3xl mb-4 hover:opacity-80'>{title}</h1></NavLink> 
             <div className='flex gap-5 mb-4 items-center'>
-                <NavLink to={`/user/${author._id}`}><img src={author?.profile} className=' rounded-full'  height='35' width='35' alt={author?.fullname} /></NavLink>
-                <NavLink to={`/user/${author._id}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{author.fullname}</p></NavLink>
+                <NavLink to={`/users/${author._id}`}><img src={author?.profile} className=' rounded-full'  height='35' width='35' alt={author?.fullname} /></NavLink>
+                <NavLink to={`/users/${author._id}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{author.fullname}</p></NavLink>
                 <div className='text-[#4d6385]'><FormatDate date={createdAt} /></div>
             </div>
             <div className='post_excerpt mb-6'>

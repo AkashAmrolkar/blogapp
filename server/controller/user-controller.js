@@ -1,6 +1,6 @@
 //import User from "../models/User-model";
 
-import users from "../models/users.js";
+import User from "../models/users.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -9,7 +9,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 export const getAllUser = async (req, resp, next) => {
     let user;
     try {
-        user = await users.find()
+        user = await User.find()
     } catch (error) {
         console.log(error)
     }
@@ -25,14 +25,14 @@ export const register = async (req, res, next) => {
     try {
         const { fullname, email, password } = req.body;
         console.log(fullname, email, password)
-        console.log("files",req.file)
+        //console.log("files",req.file)
         let profileImgPath;
         if (req.file) {
             const profileImageBuffer = req.file?.path;
             console.log(profileImageBuffer)
             profileImgPath = await uploadOnCloudinary(profileImageBuffer);
         }
-        let existingUser = await users.findOne({ email });
+        let existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "User Already Exist" });
         }
@@ -45,14 +45,14 @@ export const register = async (req, res, next) => {
 
         let newUser
         if(profileImgPath){
-            newUser = new users({
+            newUser = new User({
                 fullname,
                 email,
                 profile: profileImgPath,
                 password: hashedPass,
             })
         } else{
-            newUser = new users({
+            newUser = new User({
                 fullname,
                 email,
                 //profile: profileImgPath,
@@ -63,7 +63,7 @@ export const register = async (req, res, next) => {
 
         newUser.save();
 
-        return res.status(201).json({ users })
+        return res.status(201).json({ User })
 
     } catch (error) {
         console.log(error)   
@@ -74,11 +74,13 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     const { email, password } = req.body;
-    let user;
+    console.log(email, password)
+    
     try {
         
-        user = await users.findOne({ email });
-        const isPasswordCorrect = bcrypt.compareSync(password, user.password)
+        const user = await User.findOne({ email });
+        console.log(user)
+        const isPasswordCorrect = bcrypt.compare(password, user.password)
         if (!isPasswordCorrect) {
             return res.status(400).json({ message: "Password Incorrect" });
 
@@ -103,7 +105,7 @@ export const login = async (req, res, next) => {
 
 export const userProfile = async(req, res) => {
     try {
-        const currentUser = await users.findById(req.user.userId).select('-password');
+        const currentUser = await User.findById(req.user.userId).select('-password');
         if(!currentUser){
             return res.status(401).json(
                 {
@@ -123,7 +125,7 @@ export const singleUser = async(req, res) => {
     try {
         const authID = req.params.id;
         console.log(authID);
-        const currentUser = await users.findById(authID).select('-password');
+        const currentUser = await User.findById(authID).select('-password').populate('blogs');
         if(!currentUser){
             return res.status(401).json(
                 {
@@ -136,5 +138,4 @@ export const singleUser = async(req, res) => {
         console.log(error)
         return res.status(500).json({message: "Error fetching user data."})
     }
-
 }
