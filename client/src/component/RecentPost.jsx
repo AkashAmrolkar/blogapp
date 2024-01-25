@@ -11,7 +11,7 @@ const RecentPost = () => {
             setPosts(data)
         })
     }, [])
-    const firstThreeBlogs = posts.blogs.slice(0, 2);
+    const firstThreeBlogs = posts?.blogs.slice(0, 2);
 
     console.log(firstThreeBlogs)
   return (

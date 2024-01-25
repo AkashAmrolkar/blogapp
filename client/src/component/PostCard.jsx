@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import FormatDate from './FormatDate';
+import { FaComments } from "react-icons/fa";
+
 
 const PostCard = ({title, category, description, author, featured_img, createdAt, updatedAt, comments, _id}) => {
     const postContent = (desc) => {
@@ -10,8 +12,9 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
   return (
     
     <div className='grid grid-cols-12 mb-16 gap-8'>
-        <div className=' col-span-4'>
-           <NavLink to={`/posts/${_id}`}><img src={featured_img} height='250' width='250' alt={title} className='object-cover w-full h-[250px] shadow-xl hover:-translate-y-4 transition-all delay-75 ease-in-out' /></NavLink> 
+        <div className=' col-span-4 relative'>
+           <NavLink to={`/posts/${_id}`}><img src={featured_img} height='250' width='250' alt={title} className='object-cover w-full h-[250px] shadow-xl hover:-translate-y-4 transition-all delay-75 ease-in-out hover:opacity-80' /></NavLink> 
+           <NavLink to={`/posts/${_id}/#comments`} className='hover:flex gap-3 items-center absolute top-1/2 justify-center transform translate-x-1/2 -translate-y-1/2'><FaComments /> <p className='text-white'>{comments.length} Comments</p></NavLink>
         </div>
         <div className=' col-span-8 col-start-5'>
             

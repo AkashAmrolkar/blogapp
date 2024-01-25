@@ -45,7 +45,17 @@ const CreatePostForm = () => {
             </div>
             <div className='form_field'>
                 <label htmlFor='excerpt' >Post Content</label>
-                <ReactQuill id='excerpt' theme="snow" value={excerpt} onChange={setExcerpt} />
+                <ReactQuill id='excerpt'
+                theme="snow"
+                value={excerpt}
+                modules={{
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block']
+                ]
+                }}
+                onChange={setExcerpt} />
             </div>
             <div className='form_field'>
                 <label htmlFor='category' >Select Category: </label>
