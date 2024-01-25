@@ -2,6 +2,9 @@ import React from 'react'
 import FormatDate from './FormatDate'
 
 const ProfilePosts = ({post}) => {
+    const handleDelete = ()=> {
+
+    }
   return (
     <div className=' mb-8'>
         <div className='flex flex-wrap gap-5 items-center'>
@@ -10,6 +13,7 @@ const ProfilePosts = ({post}) => {
                 <p className='font-bold'>{post?.title}</p>
                 <p className=' text-sm text-[#002050]'><FormatDate date={post?.createdAt} /></p>
             </div>
+            <button className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80' onClick={handleDelete}>Delete Post</button>
         </div>
         
     </div>
