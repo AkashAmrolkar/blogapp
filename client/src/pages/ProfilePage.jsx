@@ -8,7 +8,7 @@ const ProfilePage = () => {
     <div>
         {
             userData?.blogs.map((post)=>(
-                <ProfilePosts post={post} />
+                <ProfilePosts post={post} key={post?._id} />
             ))
         }
     </div>

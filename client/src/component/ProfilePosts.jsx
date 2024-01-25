@@ -2,8 +2,21 @@ import React from 'react'
 import FormatDate from './FormatDate'
 
 const ProfilePosts = ({post}) => {
-    const handleDelete = ()=> {
-
+    const handleDelete = async ()=> {
+        try {
+            const response = await fetch(`/api/blogs/${post?._id}`, {
+                method: "DELETE"
+            }) 
+            if(response.ok){
+                console.log("Post Deleted")
+            }
+            else{
+                console.log("Post not deleted")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
   return (
     <div className=' mb-8'>
