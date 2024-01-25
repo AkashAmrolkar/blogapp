@@ -1,7 +1,7 @@
 import React from 'react'
 import FormatDate from './FormatDate'
 
-const PopularArticles = ({post}) => {
+const ProfilePosts = ({post}) => {
   return (
     <div className=' mb-8'>
         <div className='flex flex-wrap gap-5 items-center'>
@@ -16,4 +16,4 @@ const PopularArticles = ({post}) => {
   )
 }
 
-export default PopularArticles
+export default ProfilePosts

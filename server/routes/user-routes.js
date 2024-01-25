@@ -9,7 +9,7 @@ userRoute.get('/', getAllUser)
 userRoute.post('/register', upload.single('profile'), register)
 userRoute.post('/login', login)
 
-userRoute.get('/user', verifyToken, userProfile)
+userRoute.get('/profile', verifyToken, userProfile)
 
 userRoute.get('/author/:id', singleUser)
 

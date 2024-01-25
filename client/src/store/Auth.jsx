@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) =>{
 
     useEffect(()=>{
         if(token){
-          fetch('/api/users/user', {
+          fetch('/api/users/profile', {
             method:'GET',
             headers: {
               'Authorization': `Bearer ${token}`,
