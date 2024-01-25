@@ -7,6 +7,7 @@ import CreatePost from "../pages/CreatePost"
 import AllPosts from "../pages/AllPosts"
 import SinglePost from "../pages/SinglePost"
 import SingleUser from '../pages/SingleUser'
+import ProfilePage from "../pages/ProfilePage"
 
 const PageRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const PageRoutes = () => {
         <Route path="/posts" element= {<AllPosts />} />
         <Route path="/posts/:postId" element= {<SinglePost />} />
         <Route path="/users/:userId" element={<SingleUser />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
     </Routes>
   )
 }
