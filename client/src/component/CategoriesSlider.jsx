@@ -15,8 +15,8 @@ const CategoriesSlider = () => {
     slidesPerView={1}
     navigation={{ clickable: true }}
     //pagination={{ clickable: true }}
-    onSwiper={(swiper) => console.log(swiper)}
-    onSlideChange={() => console.log('slide change')}
+    // onSwiper={(swiper) => console.log(swiper)}
+    // onSlideChange={() => console.log('slide change')}
 
     >
         <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'><NavLink to='#' className='w-full h-full block'>Slide 1</NavLink></SwiperSlide>

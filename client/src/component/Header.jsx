@@ -3,7 +3,7 @@ import { useAuth } from "../store/Auth"
 
 const Header = () => {
   const {isLoggedIn} = useAuth();
-  console.log("Is LoggedIn", isLoggedIn)
+  //console.log("Is LoggedIn", isLoggedIn)
   return (
     <div className="bg-blue-500 p-4">
       <nav className="container mx-auto">

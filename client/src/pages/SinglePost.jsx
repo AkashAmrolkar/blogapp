@@ -4,6 +4,7 @@ import SinglepostData from '../component/SinglepostData'
 import CommentForm from '../component/CommentForm'
 import AuthorData from '../component/AuthorData'
 import ShowComments from '../component/ShowComments'
+import RelatedPosts from '../component/RelatedPosts'
 
 const SinglePost = ({ match }) => {
     const { postId } = useParams();
@@ -22,15 +23,13 @@ const SinglePost = ({ match }) => {
         fetchPost()
     }, [postId])
 
-    console.log(post)
-    
   return (
-    <div>
-
+    <div className='flex flex-col gap-12'>
         <SinglepostData post={post} />
         <AuthorData author={post?.author} title={"About the Author"}/>
         <ShowComments comments = {post?.comments} />
         <CommentForm />
+        <RelatedPosts category={post?.category} />
     </div>
   )
 }

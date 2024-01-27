@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 export const verifyToken = async(req, res, next) => {
     const token = req.headers.authorization;
-    console.log("Token", token)
+    //console.log("Token", token)
     if(!token || !token.startsWith('Bearer ')){
         return res.status(404).json(
             {

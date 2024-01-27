@@ -14,7 +14,7 @@ const RecentPost = () => {
     }, [])
     const recentPosts = posts?.blogs.slice(0, 3);
 
-    console.log(recentPosts)
+    //console.log(recentPosts)
   return (
     <div className=' px-5 py-8 rounded-xl bg-[#fff9f3] mb-6'>
         

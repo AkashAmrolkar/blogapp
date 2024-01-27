@@ -24,7 +24,7 @@ export const register = async (req, res, next) => {
 
     try {
         const { fullname, email, password } = req.body;
-        console.log(fullname, email, password)
+       // console.log(fullname, email, password)
         //console.log("files",req.file)
         let profileImgPath;
         if (req.file) {
@@ -74,12 +74,11 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     const { email, password } = req.body;
-    console.log(email, password)
     
     try {
         
         const user = await User.findOne({ email });
-        console.log(user)
+        //console.log(user)
         const isPasswordCorrect = bcrypt.compare(password, user.password)
         if (!isPasswordCorrect) {
             return res.status(400).json({ message: "Password Incorrect" });
@@ -106,6 +105,7 @@ export const login = async (req, res, next) => {
 export const userProfile = async(req, res) => {
     try {
         const currentUser = await User.findById(req.user.userId).select('-password').populate('blogs');
+        //console.log("Current User: ", currentUser)
         if(!currentUser){
             return res.status(401).json(
                 {
