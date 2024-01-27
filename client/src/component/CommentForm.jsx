@@ -43,7 +43,7 @@ const CommentForm = () => {
             <label htmlFor='comment' className=' text-2xl font-semibold relative'>
               <h2 className=' text-2xl font-semibold relative mb-5 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-full after:ml-5 max-w-full'>Leave a Reply</h2>
             </label>
-            <textarea id='comment' className='border border-gray-400 rounded-xl focus:no-underline' rows="5" value={text} onChange={(e) => setText(e.target.value)} />
+            <textarea id='comment' className='border border-gray-200 rounded-xl shadow-sm focus:no-underline' rows="5" value={text} onChange={(e) => setText(e.target.value)} />
           </div>        
         <button type="submit" className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Add Comment</button>
         </form>

@@ -5,10 +5,10 @@ import { FaXTwitter, FaFacebook, FaInstagram } from "react-icons/fa6";
 const AuthorData = ({author, title}) => {
   return (
     <div className=' p-5 rounded-xl bg-[#fff9f3]'>
-        <h2 className=' text-black font-bold text-2xl mb-5'>{title}</h2>
+        <h2 className=' text-black relative font-bold text-2xl mb-5 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-full after:ml-5 max-w-full'>{title}</h2>
         <div className="flex items-center gap-10">
             <div className=' rounded-full w-full object-cover'>
-              <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full object-cover w-[120px] h-[120px]' alt={author?.fullname} height="250" width="250" /> </NavLink>
+              <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full object-cover w-[200px] h-[200px] mx-auto' alt={author?.fullname} height="200" width="200" /> </NavLink>
             </div>
             <div>
                 <div className=''>

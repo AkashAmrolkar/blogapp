@@ -10,7 +10,7 @@ const LoggedInUserData = ({author, title}) => {
         <h2 className=' text-black font-bold text-2xl mb-5'>{title}</h2>
         <div className=' flex gap-5 items-center mb-5'>
             <div>
-              <NavLink to={`/profile/${userData?._id}`}><img src={userData?.profile} className=' rounded-full h-[250px] w-[250px] object-cover' alt={userData?.fullname} height="250" width="250" /> </NavLink>
+              <NavLink to={`/profile/${userData?._id}`}><img src={userData?.profile} className=' rounded-full h-[150px] w-[150px] object-cover' alt={userData?.fullname} height="250" width="250" /> </NavLink>
             </div>
             <div className=''>
               <NavLink to={`/profile/${userData?._id}`}><p className='font-bold'>{userData?.fullname}</p></NavLink>  

@@ -23,7 +23,7 @@ const Layout = () => {
                   isLoggedIn && <LoggedInUserData />
                 }
                 <RecentPost />
-                <PopularArticles />
+                {/* <PopularArticles /> */}
                 <CategoriesSlider />
               </aside>
             </div>
