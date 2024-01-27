@@ -8,7 +8,7 @@ const AuthorData = ({author, title}) => {
         <h2 className=' text-black font-bold text-2xl mb-5'>{title}</h2>
         <div className="flex items-center gap-10">
             <div className=' rounded-full w-full object-cover'>
-              <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full object-cover w-[250px] h-[250px]' alt={author?.fullname} height="250" width="250" /> </NavLink>
+              <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full object-cover w-[120px] h-[120px]' alt={author?.fullname} height="250" width="250" /> </NavLink>
             </div>
             <div>
                 <div className=''>

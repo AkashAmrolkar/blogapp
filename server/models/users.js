@@ -18,7 +18,7 @@ const userSchema = new Schema({
     },
     profile:{
         type: String,
-        default: 'https://res.cloudinary.com/akashamrolkar/image/upload/v1705523222/mpim7fmfnye4ujpxmrgc.jpg'
+        default: 'https://res.cloudinary.com/akashamrolkar/image/upload/v1706364547/avatar_ejimta.png'
     },
     blogs:[
         {
