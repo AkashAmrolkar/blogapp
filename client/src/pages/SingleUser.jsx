@@ -23,13 +23,18 @@ const SingleUser = () => {
   }, [userId])
 
   const blogs = authorData?.blogs
-  console.log(blogs)
   return (
     <div className='container mx-auto'>
       <SingleAuthorData author= {authorData} />
+  
       {
+        
         blogs?.map(post =>(
+          <>
+          console.log(...post)
           <PostCard key={post._id} {...post} />
+          </>
+          
         ))
       }
     </div>

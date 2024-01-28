@@ -20,6 +20,19 @@ const userSchema = new Schema({
         type: String,
         default: 'https://res.cloudinary.com/akashamrolkar/image/upload/v1706364547/avatar_ejimta.png'
     },
+    bio:{
+        type: String,
+    },
+    linkedinUrl:{
+        type: String,
+    },
+    bio:{
+        type: String,
+    },
+    facebookUrl:{
+        type: String,
+    },
+    
     blogs:[
         {
             type: mongoose.Schema.Types.ObjectId,
