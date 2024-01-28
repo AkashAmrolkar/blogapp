@@ -26,7 +26,7 @@ const userSchema = new Schema({
     linkedinUrl:{
         type: String,
     },
-    bio:{
+    instagramUrl:{
         type: String,
     },
     facebookUrl:{

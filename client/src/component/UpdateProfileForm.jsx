@@ -9,7 +9,7 @@ const UpdateProfileForm = () => {
     const [linkedinUrl, setLinkedinUrl] = useState('')
     const [facebookUrl, setfacebookUrl] = useState('')
     const [instagramUrl, setInstagramUrl] = useState('')
-    //console.log(profile, bio, linkedinUrl, instagramUrl, facebookUrl)
+    console.log(profile, bio, linkedinUrl, instagramUrl, facebookUrl)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -19,16 +19,23 @@ const UpdateProfileForm = () => {
             formData.append('linkedinUrl', linkedinUrl)
             formData.append('instagramUrl', instagramUrl)            
             formData.append('facebookUrl', facebookUrl)
+            const response = await fetch('/api/users/update', {
+                method: "PUT",
+                headers:{
+                    'authorization': `Bearer ${token}`
+                },
+                body: formData
+            })
         } catch (error) {
             console.log(error)
         }
     }
     return (
         <div>
-            <form className='flex flex-col gap-6 mt-6' onSubmit={handleSubmit}>
+            <form className='flex flex-col gap-6 mt-6' onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="input_field flex gap-2 flex-col ">
                     <label className='font-semibold text-gray-500' htmlFor='profile'>Profile Photo: </label>
-                    <input type='file' id='profile' name='profile' onChange={e=> setProfile(e.target.files)} />
+                    <input type='file' id='profile' name='profile' onChange={e=> setProfile(e.target.files[0])} />
                 </div>
                 <div className="input_field flex gap-2 flex-col">
                     <label className='font-semibold text-gray-500' htmlFor='bio'>Bio: </label>

@@ -139,3 +139,33 @@ export const singleUser = async(req, res) => {
         return res.status(500).json({message: "Error fetching user data."})
     }
 }
+
+export const updateUser = async (req, res)=>{
+    try {
+        const userId= req.user.userId
+        if(!userId){
+           return res.status(404).json({message: "User not found"})
+        }
+        //console.log("UserID: ",userId)
+        const {bio,linkedinUrl,facebookUrl,instagramUrl} = req.body
+        //console.log(bio, linkedinUrl, facebookUrl,instagramUrl)
+        let profileUrl
+        if(req.file){
+            const profileImg = req.file?.path
+            profileUrl = await uploadOnCloudinary(profileImg)
+        }
+        const updatedUser = User.findByIdAndUpdate(userId, {
+            profile: profileUrl,
+            bio,
+            linkedinUrl,
+            instagramUrl,
+            facebookUrl
+        },
+        { new: true, runValidators: true }
+        );
+        res.status(200).json({ message: 'User information updated successfully', user: updatedUser });
+ 
+    } catch (error) {
+        console.log(error)
+    }
+}
