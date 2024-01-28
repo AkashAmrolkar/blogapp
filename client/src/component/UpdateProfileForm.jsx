@@ -19,8 +19,6 @@ const UpdateProfileForm = () => {
             formData.append('linkedinUrl', linkedinUrl)
             formData.append('instagramUrl', instagramUrl)            
             formData.append('facebookUrl', facebookUrl)
-
-            //fetch()
         } catch (error) {
             console.log(error)
         }
