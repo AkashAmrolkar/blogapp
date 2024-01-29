@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { NavLink } from 'react-router-dom';
+import { categories } from '../categories';
 
 const CategoriesSlider = () => {
   return (
@@ -19,10 +20,16 @@ const CategoriesSlider = () => {
     // onSlideChange={() => console.log('slide change')}
 
     >
-        <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'><NavLink to='#' className='w-full h-full block'>Slide 1</NavLink></SwiperSlide>
-        <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'>Slide 2</SwiperSlide>
-        <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'>Slide 3</SwiperSlide>
-        <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'>Slide 4</SwiperSlide>
+      {
+        categories?.map((category, index)=>(
+          <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'>
+              <div>
+                <img src={category.image} />
+                <p>{category.name}</p>
+              </div>
+          </SwiperSlide>
+        ))
+      }
     </Swiper>
     </div>
   )
