@@ -154,16 +154,16 @@ export const updateUser = async (req, res)=>{
             const profileImg = req.file?.path
             profileUrl = await uploadOnCloudinary(profileImg)
         }
-        const updatedUser = User.findByIdAndUpdate(userId, {
-            profile: profileUrl,
-            bio,
-            linkedinUrl,
-            instagramUrl,
-            facebookUrl
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+                profile: profileUrl,
+                bio,
+                linkedinUrl,
+                instagramUrl,
+                facebookUrl
         },
         { new: true, runValidators: true }
         );
-        res.status(200).json({ message: 'User information updated successfully', user: updatedUser });
+        res.status(200).json({ message: 'User information updated successfully', updatedUser });
  
     } catch (error) {
         console.log(error)

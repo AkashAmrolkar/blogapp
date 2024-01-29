@@ -22,15 +22,19 @@ const userSchema = new Schema({
     },
     bio:{
         type: String,
+        default: '',
     },
     linkedinUrl:{
         type: String,
+        default: '',
     },
     instagramUrl:{
         type: String,
+        default: '',
     },
     facebookUrl:{
         type: String,
+        default: '',
     },
     
     blogs:[

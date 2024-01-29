@@ -25,7 +25,8 @@ const UpdateProfileForm = () => {
                     'authorization': `Bearer ${token}`
                 },
                 body: formData
-            })
+            });
+            console.log(response);
         } catch (error) {
             console.log(error)
         }
