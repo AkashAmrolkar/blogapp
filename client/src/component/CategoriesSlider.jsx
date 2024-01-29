@@ -24,7 +24,7 @@ const CategoriesSlider = () => {
         categories?.map((category, index)=>(
           <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md'>
               <div>
-                <img src={category.image} />
+                <img src={category.image} alt={category.name} height='200' width='300' />
                 <p>{category.name}</p>
               </div>
           </SwiperSlide>
