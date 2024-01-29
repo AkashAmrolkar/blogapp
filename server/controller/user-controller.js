@@ -147,8 +147,8 @@ export const updateUser = async (req, res)=>{
            return res.status(404).json({message: "User not found"})
         }
         //console.log("UserID: ",userId)
-        const {bio,linkedinUrl,facebookUrl,instagramUrl} = req.body
-        //console.log(bio, linkedinUrl, facebookUrl,instagramUrl)
+        const {bio,twitterUrl,facebookUrl,instagramUrl} = req.body
+        //console.log(bio, twitterUrl, facebookUrl,instagramUrl)
         let profileUrl
         if(req.file){
             const profileImg = req.file?.path
@@ -157,7 +157,7 @@ export const updateUser = async (req, res)=>{
         const updatedUser = await User.findByIdAndUpdate(userId, {
                 profile: profileUrl,
                 bio,
-                linkedinUrl,
+                twitterUrl,
                 instagramUrl,
                 facebookUrl
         },

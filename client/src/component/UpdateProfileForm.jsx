@@ -6,17 +6,17 @@ const UpdateProfileForm = () => {
     //console.log("Token: ",token)
     const [profile, setProfile] = useState(null)
     const [bio, setBio] = useState('')
-    const [linkedinUrl, setLinkedinUrl] = useState('')
+    const [twitterUrl, setTwitterUrl] = useState('')
     const [facebookUrl, setfacebookUrl] = useState('')
     const [instagramUrl, setInstagramUrl] = useState('')
-    console.log(profile, bio, linkedinUrl, instagramUrl, facebookUrl)
+    console.log(profile, bio, twitterUrl, instagramUrl, facebookUrl)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const formData = new FormData();
             formData.append('profile', profile)
             formData.append('bio', bio)
-            formData.append('linkedinUrl', linkedinUrl)
+            formData.append('twitterUrl', twitterUrl)
             formData.append('instagramUrl', instagramUrl)            
             formData.append('facebookUrl', facebookUrl)
             const response = await fetch('/api/users/update', {
@@ -44,7 +44,7 @@ const UpdateProfileForm = () => {
                 </div>
                 <div className="input_field flex gap-2 flex-col">
                     <label className='font-semibold text-gray-500' htmlFor='linkedin'>Linkedin Url: </label>
-                    <input type='text' id='linkedin' className='border border-gray-200 h-10 rounded-xl pl-3' name='linkedin' value={linkedinUrl} onChange={e=>setLinkedinUrl(e.target.value)} />
+                    <input type='text' id='linkedin' className='border border-gray-200 h-10 rounded-xl pl-3' name='linkedin' value={twitterUrl} onChange={e=>setTwitterUrl(e.target.value)} />
                 </div>
                 <div className="input_field flex gap-2 flex-col">
                     <label className='font-semibold text-gray-500' htmlFor='instagram'>Instagram Url: </label>

@@ -24,7 +24,7 @@ const userSchema = new Schema({
         type: String,
         default: '',
     },
-    linkedinUrl:{
+    twitterUrl:{
         type: String,
         default: '',
     },

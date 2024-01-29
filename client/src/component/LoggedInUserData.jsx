@@ -28,11 +28,21 @@ const LoggedInUserData = ({author, title}) => {
               <p className=' text-sm text-[#002050]'>Founder</p>
             </div>
         </div>
-        <div className="text-base text-[#002050] mb-5">Hello! My name is Akash Amrolkar working from Chile. I create some Ghost and Wordpress themes for differents markets, also, i offer live support via our ticket system.</div>
+        {
+          userData?.bio && <div className="text-base text-[#002050] mb-5">{userData?.bio}</div>
+        }
+        
         <div className='flex flex-wrap gap-5'>
-          <NavLink to='#' className='flex gap-2 items-center'><FaXTwitter />Twitter</NavLink>
-          <NavLink to='#' className='flex gap-2 items-center'><FaFacebook />Facebook</NavLink>
-          <NavLink to='#' className='flex gap-2 items-center'><FaInstagram />Instagram</NavLink>
+        {
+          userData?.twitterUrl && <NavLink to={userData?.twitterUrl} className='flex gap-2 items-center'><FaXTwitter />Twitter</NavLink>
+        }
+        {
+          userData?.instagramUrl && <NavLink to={userData?.instagramUrl} className='flex gap-2 items-center'><FaFacebook />Instagram</NavLink>
+        }
+        {
+          userData?.facebookUrl && <NavLink to={userData?.facebookUrl} className='flex gap-2 items-center'><FaInstagram />Facebook</NavLink>
+        }
+          
         </div>
         <NavLink to={`/profile/${userData?._id}`} className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80 mt-6 block w-fit' onClick={openForm}>View Profile</NavLink>
         {
