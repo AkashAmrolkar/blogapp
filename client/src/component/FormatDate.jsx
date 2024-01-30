@@ -3,7 +3,7 @@ import React from 'react'
 const FormatDate = ({date}) => {
     const newDate = new Date(date)
         const yyyy = newDate.getFullYear();
-        let mm = newDate.toLocaleString('default', { month: 'long' });
+        let mm = newDate.toLocaleString('default', { month: 'short' });
         if(mm<10){
          mm = '0'+mm
         }

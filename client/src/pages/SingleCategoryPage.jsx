@@ -4,7 +4,7 @@ import CategoryBanner from '../component/CategoryBanner'
 
 const SingleCategoryPage = () => {
   return (
-    <div className='flex flex-col gap-5'>
+    <div className='flex flex-col gap-14'>
         <CategoryBanner />
         <CategoryPosts />
     </div>
