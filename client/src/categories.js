@@ -1,7 +1,7 @@
 export const categories = [
     {
-        slug: 'techology',
-        name: 'Techology',
+        slug: 'technology',
+        name: 'Technology',
         image: 'https://res.cloudinary.com/akashamrolkar/image/upload/v1706552600/khyg9bkg6kv7xnipfo2h.jpg'
     },
     {

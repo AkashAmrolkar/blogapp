@@ -27,10 +27,12 @@ const CategoriesSlider = () => {
         categories?.map((category, index)=>(
           <>
             <SwiperSlide className='px-3 py-8 text-center border swiper-slide-active rounded-xl shadow-md' key={index}>
-              <div>
-                <img src={category.image} className='mb-5' alt={category.name} height='200' width='300' />
-                <p className='text-left font-semibold text-[#302D55]'>{category.name}</p>
-              </div>
+              <NavLink to={`/category/${category.slug}`}>
+                <div>
+                  <img src={category.image} className='mb-5' alt={category.name} height='200' width='300' />
+                  <p className='text-left font-semibold text-[#302D55]'>{category.name}</p>
+                </div>
+              </NavLink>              
             </SwiperSlide>
             <div className="swiper-button-next">
               <FaArrowRight />
