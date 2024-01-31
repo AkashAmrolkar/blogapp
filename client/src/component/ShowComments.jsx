@@ -5,7 +5,7 @@ import FormatDate from './FormatDate'
 const ShowComments = ({comments}) => {
   return (
     <div className='relative'>
-        <h2 className=' text-2xl font-semibold relative mb-8 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-full after:ml-5 max-w-full'>Comments</h2>
+        <h2 className=' text-2xl font-semibold relative mb-8 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-2/6 after:ml-5 max-w-full'>Comments</h2>
         {
             comments?.map((cmt)=>(
                 <div key={cmt._id} className='mb-8'>

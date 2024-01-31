@@ -6,8 +6,8 @@ const SinglepostData = ({post}) => {
     <div>
         <div className=' border-b-2 border-gray-100'>
             <img src={post?.featured_img} height='' width='' alt={post?.title} className='w-full h-3/5 object-cover mb-5 shadow-xl' />
-            <h1 className='font-bold text-[#302D55] text-3xl mb-4 text-center'>{post?.title}</h1>
-            <div className='flex gap-5 mb-4 items-center justify-center'>
+            <h1 className='font-bold text-[#302D55] text-xl lg:text-3xl mb-4 text-center'>{post?.title}</h1>
+            <div className='flex flex-col md:flex-row gap-5 mb-4 items-center justify-center'>
                 <img src={post?.author.profile} className=' rounded-full h-[50px] w-[50px] object-cover'  height='50' width='50' alt={post?.author.fullname} />
                 <NavLink to={`/users/${post?.author._id}`}><p className='text-[#F43676] hover:opacity-80'><span className=' text-sm text-[#002050] '>By </span>{post?.author.fullname}</p></NavLink>
                 <div className='text-[#4d6385]'><span className=' font-semibold'>Created At:</span> <FormatDate date={post?.createdAt} /></div>

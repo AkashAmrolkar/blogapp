@@ -41,7 +41,7 @@ const CommentForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="form_field flex flex-col gap-2 mb-4">
             <label htmlFor='comment' className=' text-2xl font-semibold relative'>
-              <h2 className=' text-2xl font-semibold relative mb-5 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-full after:ml-5 max-w-full'>Leave a Reply</h2>
+              <h2 className=' text-2xl font-semibold relative mb-5 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-2/6 after:ml-5 max-w-full'>Leave a Reply</h2>
             </label>
             <textarea id='comment' className='border border-gray-200 rounded-xl shadow-sm focus:no-underline' rows="5" value={text} onChange={(e) => setText(e.target.value)} />
           </div>        

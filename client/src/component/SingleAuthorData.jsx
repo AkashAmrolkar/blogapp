@@ -6,9 +6,9 @@ const SingleAuthorData = ({author}) => {
     //console.log(author)
     return (
         <div className=' p-5 rounded-xl bg-[#fff9f3] mb-6'>
-            <div className="flex items-center gap-10">
+            <div className="flex flex-col md:flex-row items-center gap-10">
                 <div className=' rounded-full w-full object-cover'>
-                  <img src={author?.profile} className=' rounded-full object-cover w-[250px] h-[250px]' alt={author?.fullname} height="250" width="250" />
+                  <img src={author?.profile} className=' rounded-full object-cover md:w-[200px] md:h-[200px] w-[250px] h-[250px]' alt={author?.fullname} height="250" width="250" />
                 </div>
                 <div>
                     <div className=''>

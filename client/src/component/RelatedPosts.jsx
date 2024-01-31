@@ -22,7 +22,7 @@ const RelatedPosts = ({category}) => {
   console.log(relatedPost)
   return (
     <div>
-      <h2 className=' text-2xl font-semibold relative mb-8 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-full after:ml-5 max-w-full'>Related Posts</h2>
+      <h2 className=' text-2xl font-semibold relative mb-8 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after:w-2/6 after:ml-5 max-w-full'>Related Posts</h2>
       <div className='grid grid-cols-2 gap-5'>
         {
           relatedPost?.map((post)=>(

@@ -31,7 +31,6 @@ const SingleUser = () => {
         
         blogs?.map(post =>(
           <>
-          console.log(...post)
           <PostCard key={post._id} {...post} />
           </>
           
