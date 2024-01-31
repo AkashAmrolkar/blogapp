@@ -22,7 +22,7 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
   return (
     
     <div className='grid grid-cols-12 mb-16 gap-8'>
-        <div className=' col-span-4 relative'>
+        <div className='col-span-12 md:col-span-4 relative'>
            <NavLink to={`/posts/${_id}`}><img src={featured_img} height='250' width='250' alt={title} className='object-cover w-full h-[250px] shadow-xl hover:opacity-80 hover:scale-105 transition-all delay-200' onMouseEnter={handleMouseenter} onMouseLeave={handleMouseLeave} />           
            { showComment && 
                 <div className='flex gap-1 items-center justify-center absolute top-1/2 left-1/2 -translate-x-2/4 z-10'>                
@@ -31,9 +31,9 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
             }
             </NavLink> 
         </div>
-        <div className=' col-span-8 col-start-5'>
+        <div className='col-span-12 md:col-span-8 md:col-start-5'>
             
-            <NavLink to={`/posts/${_id}`}><h1 className='font-bold text-[#302D55] text-3xl mb-4 hover:opacity-80'>{title}</h1></NavLink> 
+            <NavLink to={`/posts/${_id}`}><h1 className='font-bold text-[#302D55] text-2xl md:text-3xl mb-4 hover:opacity-80'>{title}</h1></NavLink> 
             <div className='flex gap-5 mb-4 items-center'>
                 <NavLink to={`/users/${author._id}`}><img src={author?.profile} className=' rounded-full w-[50px] h-[50px] object-cover shadow-xl'  height='50' width='50' alt={author?.fullname} /></NavLink>
                 <NavLink to={`/users/${author._id}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{author.fullname}</p></NavLink>

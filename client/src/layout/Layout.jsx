@@ -14,10 +14,10 @@ const Layout = () => {
         <Header />
         <main className="container mx-auto py-10">
           <div className="grid grid-cols-12 gap-5">
-            <div className="sm:col-span-12 md:col-span-9">              
+            <div className="col-span-12 md:col-span-9">              
               <PageRoutes />
             </div>
-            <div className=" sm:hidden md:block col-span-3 col-start-10">
+            <div className="hidden md:block col-span-3 col-start-10">
               <aside className=" sticky top-10">
                 {
                   isLoggedIn && <LoggedInUserData />
