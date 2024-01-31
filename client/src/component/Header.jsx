@@ -20,7 +20,7 @@ const Header = () => {
       <nav className="container p-0 mx-auto">
         <div className="flex justify-between items-center relative">
           <Link to={'/'} className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold text-3xl leading-10">Logo</Link>
-          <div className="space-x-4 hidden md:flex">
+          <div className="space-x-4 hidden md:flex justify-between items-center">
             <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
             <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
             <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
@@ -38,7 +38,7 @@ const Header = () => {
             }
             {
               !openMenu &&
-              <div className="flex flex-col gap-4 bg-white shadow-md absolute bottom-0">
+              <div className="flex flex-col gap-4 bg-white shadow-md absolute top-16 w-1/2 right-0 p-5 z-10">
                 <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
                 <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
                 <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
