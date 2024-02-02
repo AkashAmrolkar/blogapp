@@ -23,7 +23,7 @@ const Header = () => {
           <div className="space-x-4 hidden md:flex justify-between items-center">
             <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
             <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
-            <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
+            <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
             {
               isLoggedIn && <><Link to={'/create-post'} className="nav-link text-[#302D55] font-semibold">Create Post</Link> <Link to={'/logout'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80">Logout</Link></>
 
@@ -41,7 +41,7 @@ const Header = () => {
               <div className="flex flex-col gap-4 bg-white shadow-md absolute top-16 w-1/2 right-0 p-5 z-10">
                 <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
                 <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
-                <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
+                <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
                 {
                   isLoggedIn && <><Link to={'/create-post'} className="nav-link text-[#302D55] font-semibold">Create Post</Link> <Link to={'/logout'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80">Logout</Link></>
 
