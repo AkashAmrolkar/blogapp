@@ -1,14 +1,14 @@
 import React from 'react'
 import {useAuth} from '../store/Auth'
 import ProfilePosts from '../component/ProfilePosts';
-import LoggedInUserData from '../component/LoggedInUserData';
+import ProfileBanner from '../component/ProfileBanner';
 const ProfilePage = () => {
     const {userData} = useAuth();
     console.log("UserData", userData)
   return (
     <div>
 
-      <LoggedInUserData author={userData} />
+      <ProfileBanner author={userData} />
         
         {
             userData?.blogs?.map((post)=>(

@@ -5,14 +5,18 @@ const Home = () => {
 
   const [postData, setPostData] = useState(null)
   useEffect(()=>{
-    fetch('/api/blogs', {
-      method:"GET"
-    }).then((res)=>{
-      return res.json();
-    })
-    .then((data) => {
-      setPostData(data['blogs']);
-    });
+    const fetchAllPosts = async () => {
+      fetch('/api/blogs', {
+        method:"GET"
+      }).then((res)=>{
+        return res.json();
+      })
+      .then((data) => {
+        setPostData(data['blogs']);
+      });
+    }
+    fetchAllPosts();
+    
   }, [])
   return (
     <div>

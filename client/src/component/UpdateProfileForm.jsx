@@ -54,7 +54,7 @@ const UpdateProfileForm = () => {
                     <label className='font-semibold text-gray-500' htmlFor='facebook'>Facebook Url: </label>
                     <input type='text' id='facebook' className='border border-gray-200 h-10 rounded-xl pl-3' name='facebook' value={facebookUrl} onChange={e=>setfacebookUrl(e.target.value)} />
                 </div>
-                <button type="submit" className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Update Profile</button>
+                <button type="submit" className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 w-fit mx-auto rounded-xl hover:opacity-80'>Update Profile</button>
             </form>
         </div>
     )
