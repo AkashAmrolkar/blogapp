@@ -8,7 +8,7 @@ const CategoryPostCard = ({post}) => {
     return desc.substring(0, maxLength);
   }
   return (
-    <div className='flex flex-col gap-5 bg-white shadow-md rounded-b-xl'>
+    <div className='flex flex-col gap-5 bg-white shadow-md rounded-b-xl mb-8'>
         <NavLink to={`/posts/${post?._id}`}><img src={post?.featured_img} className=' shadow-md rounded-t-xl' alt={post?.title} height='' width='' /></NavLink>
         <div className='px-4 flex flex-col gap-5'>
           <NavLink to={`/posts/${post?._id}`}><h2 className=' text-2xl font-semibold hover:opacity-80 text-[#302D55]'>{post?.title}</h2></NavLink>

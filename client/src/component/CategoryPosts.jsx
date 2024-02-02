@@ -28,7 +28,7 @@ const CategoryPosts = () => {
         {
             data?.map((post, index)=>(
                 <>
-                    <div className='grid grid-cols-3 gap-4'>
+                    <div className='grid grid-cols-3 gap-4 mb-8'>
                         <CategoryPostCard post={post} key={index} />
                     </div>                    
                 </>                

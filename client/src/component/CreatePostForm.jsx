@@ -39,12 +39,12 @@ const CreatePostForm = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-            <div className='form_field'>
-                <label htmlFor='postTitle' >Post Title: </label>
-                <input id='postTitle' type='text' name="postTitle" value={title} onChange={(e)=> setTitle(e.target.value)} required/>
+            <div className='form_field mb-4 flex flex-col gap-1'>
+                <label className=' font-semibold text-black text-lg' htmlFor='postTitle' >Post Title: </label>
+                <input id='postTitle' type='text' name="postTitle" className='pl-2 h-8 border border-gray-200 rounded-md' value={title} onChange={(e)=> setTitle(e.target.value)} required/>
             </div>
-            <div className='form_field'>
-                <label htmlFor='excerpt' >Post Content</label>
+            <div className='form_field mb-4 flex flex-col gap-1'>
+                <label className=' font-semibold text-black text-lg' htmlFor='excerpt' >Post Content: </label>
                 <ReactQuill id='excerpt'
                 theme="snow"
                 value={excerpt}
@@ -57,9 +57,9 @@ const CreatePostForm = () => {
                 }}
                 onChange={setExcerpt} />
             </div>
-            <div className='form_field'>
-                <label htmlFor='category' >Select Category: </label>
-                <select id='category' value={select} onChange={(e) => setSelect(e.target.value)} required>
+            <div className='form_field mb-4 flex flex-col gap-1'>
+                <label className=' font-semibold text-black text-lg' htmlFor='category' >Select Category: </label>
+                <select id='category' className='border-gray-200 border w-fit px-2' value={select} onChange={(e) => setSelect(e.target.value)} required>
                     <option value=''>Select Category</option>
                     <option value='education'>Education</option>
                     <option value='technology'>Technology</option>
@@ -67,12 +67,14 @@ const CreatePostForm = () => {
                     <option value='food'>Food</option>
                 </select>
             </div>
-            <div className="form_field">
-                <label htmlFor='thumbnail'>Post featured image</label>
-                <input type='file' id='thumbnail' onChange={(e)=> setThumbnail(e.target.files[0])} />
+            <div className="form_field mb-4 flex gap-1">
+                <dv className="flex flex-col">
+                    <label className=' font-semibold text-black text-lg' htmlFor='thumbnail'>Select Featured Image: </label>
+                    <input type='file' className='w-fit' id='thumbnail' onChange={(e)=> setThumbnail(e.target.files[0])} />
+                </dv>
             </div>
             <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80 mt-6 block w-fit"
                 type="submit"
               >
                 Add Post
