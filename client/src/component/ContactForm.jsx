@@ -38,12 +38,12 @@ const ContactForm = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-            <div className='flex gap-5 mb-5'>
-                <div className="form_field flex flex-col gap-2 w-1/2">
+            <div className='flex flex-col sm:flex-row gap-5 mb-5'>
+                <div className="form_field flex flex-col gap-2 w-full sm:w-1/2">
                     <label className='font-semibold'>Full Name: </label>
                     <input type='text' className='h-8 border border-gray-200 rounded-md pl-2 focus:outline-none' name='fullname' value={data.fullname} onChange={handleChange} placeholder='John Doe' required />
                 </div>
-                <div className="form_field flex flex-col gap-2 w-1/2">
+                <div className="form_field flex flex-col gap-2 w-full sm:w-1/2">
                     <label className='font-semibold'>Email: </label>
                     <input type='email' className='h-8 border border-gray-200 rounded-md pl-2 focus:outline-none' name='email' value={data.email} onChange={handleChange} placeholder='johndoe@gmail.com' required />
                 </div>
