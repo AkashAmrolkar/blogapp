@@ -24,9 +24,6 @@ const CommentForm = () => {
             if (!response.ok) {
               throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-      
-            const data = await response.json();
-            // Optionally, you can update the UI or perform other actions.
             setTimeout(() => {
               window.location.reload();
             }, 1000);

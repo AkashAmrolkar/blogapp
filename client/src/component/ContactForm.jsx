@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const ContactForm = () => {
     const [data, setData] = useState([
@@ -14,8 +15,24 @@ const ContactForm = () => {
             [e.target.name]: e.target.value,
         })
     }
-    const handleSubmit = () => {
-        
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await fetch('/api/contact/save-contact',{
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            if(response.status === 201){
+                toast.success("Your request Submitted Successfully")
+            } else if(response.status === 500){
+                toast.error("Internal Server Error")
+            }
+        } catch (error) {
+            toast.error("Server Error")
+        }        
 
     }
   return (
