@@ -28,7 +28,7 @@ const postContent = (desc) => {
 }
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto mt-12 md:mt-20'>
       <div className="grid md:grid-cols-3 gap-4 text-center">
         {
           posts?.map((post)=>(

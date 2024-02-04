@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 import { toast } from 'react-toastify';
-import registerImg from '../assets/register.jpg';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Register = () => {
@@ -28,7 +27,7 @@ const Register = () => {
       if (password === confirmPassword) {
         formData.append('password', password);
       } else{
-        toast.error("Password and Confirmed Password Mismatched..!")
+        return toast.error("Password and Confirmed Password Mismatched..!")
       }
       formData.append('profile', profile);
       const response = await fetch('/api/users/register', {
@@ -48,9 +47,9 @@ const Register = () => {
   };
 
   return (
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-5">
-        <div>
-          <h2 className="text-center text-5xl font-semibold text-black">Register</h2>
+      <div className="grid grid-cols-1 items-center justify-center gap-5 py-10 mt-12 md:mt-20">
+        <div className=' w-full md:w-2/4 mx-auto'>
+          <h2 className="text-center text-5xl font-semibold text-[#302D55]">Register</h2>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit} encType='multipart/form-data'>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullname">
@@ -80,7 +79,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-outline mb-4">
+            <div className="form-outline mb-4 w-fit">
               <label className="form-label" htmlFor="formupload">
                 Profile Picture:
               </label>
@@ -89,7 +88,8 @@ const Register = () => {
                 type="file"
                 id="formupload"
                 name="profile"
-                className="form-control"
+                className="form-control w-full"
+                style={{width: '100%'}}
               />
             </div>
             <div className="mb-6">
@@ -122,13 +122,13 @@ const Register = () => {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80"
                 type="submit"
               >
                 Register
               </button>
-              <Link to="/login" className="flex items-center gap-2 font-semibold">
-                Login <BsArrowRight />
+              <Link to="/login" className="flex items-center gap-2 font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] bg-clip-text text-transparent">
+                Login <BsArrowRight className="text-black"/>
               </Link>
             </div>
           </form>

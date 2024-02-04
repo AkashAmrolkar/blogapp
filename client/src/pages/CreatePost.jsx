@@ -10,7 +10,7 @@ const CreatePost = () => {
 
   return (
    <>
-     <div className="container custom_class">
+     <div className="container custom_class py-10 mt-12 md:mt-20">
          { 
           isLoggedIn ? <CreatePostForm /> : <Modal />
          }

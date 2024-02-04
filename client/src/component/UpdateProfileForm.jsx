@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useAuth } from '../store/Auth'
+import {toast} from 'react-toastify'
 
 const UpdateProfileForm = () => {
     const {token} = useAuth();
@@ -26,7 +27,19 @@ const UpdateProfileForm = () => {
                 },
                 body: formData
             });
-            console.log(response);
+            if (response.status === 200) {
+                toast.success("Profile Updated Successfully..!")
+                // Clear form fields
+                setProfile(null);
+                setBio('');
+                setTwitterUrl('');
+                setInstagramUrl('');
+                setfacebookUrl('');
+            }
+            if (response.status === 500) {
+                toast.error("Internal Server Error")
+            }
+            //console.log(response);
         } catch (error) {
             console.log(error)
         }

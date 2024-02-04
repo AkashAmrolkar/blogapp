@@ -8,6 +8,11 @@ import { IoMdClose } from "react-icons/io";
 
 const LoggedInUserData = ({author, title}) => {
   const {userData} = useAuth();
+
+  const postContent = (data) =>{
+    const maxLength = 200
+    return data.substring(0, maxLength)
+  }
   return (
     <div className=' p-5 rounded-xl bg-[#fff9f3] mb-6'>
         <h2 className=' text-black font-bold text-2xl mb-5'>{title}</h2>
@@ -21,7 +26,7 @@ const LoggedInUserData = ({author, title}) => {
             </div>
         </div>
         {
-          userData?.bio && <div className="text-base text-[#002050] mb-5">{userData?.bio}</div>
+          userData?.bio && <div className="text-base text-[#002050] mb-5">{postContent(userData?.bio)}..</div>
         }
         
         <div className='flex flex-wrap gap-5'>

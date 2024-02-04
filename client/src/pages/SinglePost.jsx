@@ -5,6 +5,7 @@ import CommentForm from '../component/CommentForm'
 import AuthorData from '../component/AuthorData'
 import ShowComments from '../component/ShowComments'
 import RelatedPosts from '../component/RelatedPosts'
+import Sidebar from '../component/Sidebar'
 
 const SinglePost = ({ match }) => {
     const { postId } = useParams();
@@ -23,13 +24,20 @@ const SinglePost = ({ match }) => {
         fetchPost()
     }, [postId])
 
-  return (
-    <div className='flex flex-col gap-12'>
-        <SinglepostData post={post} />
-        <AuthorData author={post?.author} title={"About the Author"}/>
-        <ShowComments comments = {post?.comments} />
-        <CommentForm />
-        <RelatedPosts category={post?.category} />
+  return (       
+    <div className='container mx-auto mt-12 md:mt-20 py-10'>      
+        <div className="grid grid-cols-12 gap-5">
+            <div className="col-span-12 lg:col-span-9 gap-10"> 
+                <div className='flex flex-col gap-10'>
+                    <SinglepostData post={post} />
+                    <AuthorData author={post?.author} title={"About the Author"}/>
+                    <ShowComments comments = {post?.comments} />
+                    <CommentForm />
+                    <RelatedPosts category={post?.category} />
+                </div>                
+            </div>
+            <Sidebar />
+        </div>            
     </div>
   )
 }

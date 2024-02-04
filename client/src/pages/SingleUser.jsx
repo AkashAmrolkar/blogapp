@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SingleAuthorData from '../component/SingleAuthorData'
 import PostCard from '../component/PostCard'
+import Sidebar from '../component/Sidebar'
 
 const SingleUser = () => {
   const {userId} = useParams()
@@ -24,18 +25,21 @@ const SingleUser = () => {
 
   const blogs = authorData?.blogs
   return (
-    <div className='container mx-auto'>
-      <SingleAuthorData author= {authorData} />
-  
-      {
-        
-        blogs?.map(post =>(
-          <>
-          <PostCard key={post._id} {...post} />
-          </>
-          
-        ))
-      }
+    <div className='container mx-auto flex flex-col gap-10 mt-12 md:mt-20 py-10'>
+      <SingleAuthorData author= {authorData} />        
+      <div className="grid grid-cols-12 gap-5">
+        <div className="col-span-12 lg:col-span-9" id='all-posts'> 
+          {
+            
+            blogs?.map(post =>(
+              <>
+              <PostCard key={post._id} {...post} />
+              </>              
+            ))
+          }
+        </div>
+        <Sidebar />
+      </div>
     </div>
   )
 }

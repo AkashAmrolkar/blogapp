@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import PopularArticles from './PopularArticles'
+import { Facebook} from 'react-content-loader'
 
 const RecentPost = () => {
     const [posts, setPosts] = useState(null)
+    const [loading, setLoading] = useState(true);
     useEffect(()=>{
         fetch('/api/blogs',{
             method: "GET"
@@ -10,11 +12,13 @@ const RecentPost = () => {
             return res.json()
         }).then((data)=>{
             setPosts(data)
+            setLoading(false)
         })
     }, [])
     const recentPosts = posts?.blogs.slice(0, 3);
 
     //console.log(recentPosts)
+    if(loading) return <Facebook/>
   return (
     <div className=' px-5 py-8 rounded-xl bg-[#fff9f3] mb-6'>
         

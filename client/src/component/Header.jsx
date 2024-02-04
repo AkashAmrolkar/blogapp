@@ -16,7 +16,7 @@ const Header = () => {
     setOpenMenu(true);
   }
   return (
-    <div className=" bg-transparent shadow-md p-4">
+    <div className=" bg-transparent shadow-md p-4 fixed top-0 w-full bg-white z-10">
       <nav className="container p-0 mx-auto">
         <div className="flex justify-between items-center relative">
           <Link to={'/'} className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold text-3xl leading-10">Logo</Link>
@@ -34,24 +34,26 @@ const Header = () => {
           </div>
           <div className="flex justify-between items-center md:hidden ">
             {
+              isLoggedIn && 'Profile'
+            }
+            {
               openMenu ? <IoMenu className="text-3xl" onClick={handleMenu} /> : <IoClose className={`text-3xl `}  onClick={handleCloseMenu} />
             }
             {
               !openMenu &&
-              <div className="flex flex-col gap-4 bg-white shadow-md absolute top-16 w-1/2 right-0 p-5 z-10">
+              <div className="flex flex-col gap-4 bg-white shadow-md absolute top-16 w-1/2 transition-all delay-300 -translate-x-full ease-in-out right-0 p-5 z-10">
                 <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
                 <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
                 <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
                 {
-                  isLoggedIn && <><Link to={'/create-post'} className="nav-link text-[#302D55] font-semibold">Create Post</Link> <Link to={'/logout'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80">Logout</Link></>
+                  isLoggedIn && <><Link to={'/create-post'} className="nav-link text-[#302D55] font-semibold">Create Post</Link> <Link to={'/logout'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80 w-fit">Logout</Link></>
 
                 }
                 {
-                  !isLoggedIn && <><Link to={'/register'} className="nav-link text-[#302D55] font-semibold">Register</Link><Link to={'/login'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80">Login</Link></>
+                  !isLoggedIn && <><Link to={'/register'} className="nav-link text-[#302D55] font-semibold w-fit">Register</Link><Link to={'/login'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80 w-fit">Login</Link></>
                 }
               </div>
-            }           
-           
+            }
           </div>
         </div>
       </nav>  

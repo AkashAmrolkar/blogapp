@@ -71,37 +71,22 @@ export const register = async (req, res, next) => {
 
 }
 
-
-export const login = async (req, res, next) => {
-    const { email, password } = req.body;
-    
-    try {
-        
-        const user = await User.findOne({ email });
-        //console.log(user)
-        const isPasswordCorrect = bcrypt.compare(password, user.password)
-        if (!isPasswordCorrect) {
-            return res.status(400).json({ message: "Password Incorrect" });
-
-        }
-        if (!user) {
-            return res.status(404).json({ message: "Could not find the user with this Email please try another one" });
-        }
-
-        if (user && isPasswordCorrect) {
-            // Generate web tokens
-            const token = jwt.sign({ userId: user._id,userName: user.firstname, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '24h' });
-            res.json({ message: 'user loggedin successfully', token, userName: user.firstname });
-            
-        } else {
-            return res.status(404).json({message: "Wrong Password"})
-        }
-    } catch (error) {
-        console.log(error)
+export const login = async (req, res) =>{
+    // console.log(req.body);
+    const {email, password} = req.body
+    const user = await User.findOne({email})
+    if(!user){
+        return res.status(401).json({message: "Invalid Email Address"})
     }
-
+    const checkPass = bcrypt.compareSync(password, user.password)
+    if(!checkPass){
+        return res.status(404).json({message: "Password Incorrect"})
+    }
+    if(user && checkPass){
+        const token = jwt.sign({ userId: user._id,userName: user.firstname, userEmail: user.email }, process.env.SECRET_KEY, { expiresIn: '24h' });
+        return res.status(200).json({ message: 'user loggedin successfully', token, userName: user.firstname });
+    }
 }
-
 export const userProfile = async(req, res) => {
     try {
         const currentUser = await User.findById(req.user.userId).select('-password').populate('blogs');
@@ -124,7 +109,7 @@ export const userProfile = async(req, res) => {
 export const singleUser = async(req, res) => {
     try {
         const authID = req.params.id;
-        console.log(authID);
+       // console.log(authID);
         const currentUser = await User.findById(authID).select('-password').populate('blogs');
         if(!currentUser){
             return res.status(401).json(

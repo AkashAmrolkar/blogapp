@@ -28,6 +28,10 @@ const CreatePostForm = () => {
             })
             if(respose.status === 200){
                 toast.success("Post Created Successfully..!")
+                setTitle('');
+                setExcerpt('');
+                setSelect('');
+                setThumbnail(null);
             }
         } catch (error) {
             toast.error("Error while creating Post")
