@@ -6,7 +6,15 @@ import users from "../models/users.js";
 export const getAllBlogs = async(req, res, next)=>{
     let blogs
     try {
-        blogs = await Blogs.find().sort({ createdAt: -1 }).populate('author', '-password');
+        const page= parseInt(req.query.page)-1 || 0;
+        const limit = parseInt(req.query.limit) || 10;
+        const search = req.query.search || '';
+        const dateOrder = req.query.dateorder || 1;
+        blogs = await Blogs.find({title: {$regex: search, $options: 'i'}})
+        .sort({ createdAt: dateOrder })
+        .skip(page*limit)
+        .limit(limit)
+        .populate('author', '-password');
     } catch (error) {
         console.log(error)
     }
