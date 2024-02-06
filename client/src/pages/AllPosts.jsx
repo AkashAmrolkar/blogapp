@@ -36,11 +36,25 @@ const handleDateOrder = (e) => {
   return (
     <div className='container mx-auto mt-12 md:mt-20'>
       <div>
-        <input type='text' name="search" className='border border-gray-200 mb-5 rounded-md p-3 focus:outline-none' value={search} placeholder='Type to search posts' onChange={handleSearch}/>
-        <select name= 'date_order' value={dateOrder} onChange={handleDateOrder} className='border border-gray-200 rounded-md'>
-          <option value='1'>Ascending</option>
-          <option value='-1'>Descending</option>
-        </select>
+        <div className="flex flex-col gap-4">
+          <label htmlFor='' className=''>Search posts by type: </label>
+          <input type='text' name="search" className='border border-gray-200 mb-5 rounded-md p-3 focus:outline-none' value={search} placeholder='Type to search posts' onChange={handleSearch}/>
+        </div>
+        <div className="flex flex-col gap-4">
+          <label htmlFor='' className=''>Select Date Order: </label>
+          <select name= 'date_order' value={dateOrder} onChange={handleDateOrder} className='border border-gray-200 rounded-md'>
+            <option value='1'>Ascending</option>
+            <option value='-1'>Descending</option>
+          </select>
+        </div>
+        <div className="flex flex-col gap-4">
+          <label htmlFor='' className=''>Select Posts by categories: </label>
+          <select name= 'date_order' value={dateOrder} onChange={handleDateOrder} className='border border-gray-200 rounded-md'>
+            <option value='1'>Ascending</option>
+            <option value='-1'>Descending</option>
+          </select>
+        </div>
+        
       </div>
       <div className="grid md:grid-cols-3 gap-4 text-center">
         {
