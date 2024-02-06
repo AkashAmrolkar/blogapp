@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FaCalendarAlt, FaUser  } from "react-icons/fa";
-import FormatDate from '../component/FormatDate';
 import CategoryPostCard from '../component/CategoryPostCard';
+import Categories from '../categories'
 const AllPosts = () => {
 const [posts, setPosts] = useState([])
 const [dateOrder, setDateOrder] = useState('')
@@ -50,8 +49,11 @@ const handleDateOrder = (e) => {
         <div className="flex flex-col gap-4">
           <label htmlFor='' className=''>Select Posts by categories: </label>
           <select name= 'date_order' value={dateOrder} onChange={handleDateOrder} className='border border-gray-200 rounded-md'>
-            <option value='1'>Ascending</option>
-            <option value='-1'>Descending</option>
+            {
+              Categories.map((category)=>(
+                <option value={category.slug}>{category.name}</option>
+              ))
+            }
           </select>
         </div>
         
