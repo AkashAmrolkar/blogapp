@@ -7,10 +7,11 @@ export const getAllBlogs = async(req, res, next)=>{
     let blogs
     try {
         const page= parseInt(req.query.page)-1 || 0;
-        const limit = parseInt(req.query.limit) || 10;
+        const limit = parseInt(req.query.limit) || 6;
         const search = req.query.search || '';
+        const category = req.query.category || '';
         const dateOrder = req.query.dateorder || 1;
-        blogs = await Blogs.find({title: {$regex: search, $options: 'i'}})
+        blogs = await Blogs.find({title: {$regex: search, $options: 'i'}, category: {$regex: category, $options: 'i'}})
         .sort({ createdAt: dateOrder })
         .skip(page*limit)
         .limit(limit)
