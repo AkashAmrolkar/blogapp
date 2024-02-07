@@ -5,17 +5,18 @@ import { Facebook} from 'react-content-loader'
 const RecentPost = () => {
     const [posts, setPosts] = useState(null)
     const [loading, setLoading] = useState(true);
+    const limit=3
     useEffect(()=>{
-        fetch('/api/blogs',{
+        fetch(`/api/blogs?limit=${limit}`,{
             method: "GET"
         }).then((res)=>{
             return res.json()
         }).then((data)=>{
-            setPosts(data)
+            setPosts(data['blogs'])
             setLoading(false)
         })
     }, [])
-    const recentPosts = posts?.blogs.slice(0, 3);
+    //const recentPosts = posts?.blogs.slice(0, 3);
 
     //console.log(recentPosts)
     if(loading) return <Facebook/>
@@ -24,7 +25,7 @@ const RecentPost = () => {
         
         <h2 className=' text-black font-bold text-2xl mb-5'>Recent Posts</h2>
         {
-            recentPosts?.map((post)=>(
+            posts?.map((post)=>(
                 <PopularArticles post={post} key={post._id} title="Recent Posts" />
             ))
         }

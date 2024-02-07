@@ -17,7 +17,7 @@ const SinglepostData = ({post}) => {
             </div>
         </div>
         <div className='flex justify-between items-center my-5'>
-            <div className='capitalize'><span className=' font-semibold'>Category:</span> {post?.category}</div>
+            <div className='capitalize'><span className=' font-semibold'>Category:</span> <NavLink to={`/category/${post?.category}`}>{post?.category}</NavLink></div>
             <div className='text-[#4d6385]'><span className=' font-semibold'>Last Updated:</span> <FormatDate date={post?.updatedAt} /></div>
         </div>
     </div>

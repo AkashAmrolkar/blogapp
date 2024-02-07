@@ -26,24 +26,27 @@ const SinglePost = ({ match }) => {
         };
         fetchPost()
     }, [postId])
-  return (       
-    <div className='container mx-auto mt-12 md:mt-20 py-10'>      
-        <div className="grid grid-cols-12 gap-5">
-            <div className="col-span-12 lg:col-span-9 gap-10"> 
-                <div className='flex flex-col gap-10'>
-                    <SinglepostData post={post} />
-                    <AuthorData author={post?.author} title={"About the Author"}/>
-                    <ShowComments comments = {post?.comments} />
-                    <CommentForm setShowLoginMsg= {setShowLoginMsg} />
-                    {
-                        showLoginMsg && <ModalPopup setShowLoginMsg={setShowLoginMsg} message='Please Login, you are not authorised to comment on this post.' />
-                    }
-                    <RelatedPosts category={post?.category} />
-                </div>                
-            </div>
-            <Sidebar />
-        </div>            
-    </div>
+  return (     
+    <div className={`${showLoginMsg ? 'bg-red' : 'transparent'}`}>
+        <div className='container mx-auto mt-12 md:mt-20 py-10'>      
+            <div className="grid grid-cols-12 gap-5">
+                <div className="col-span-12 lg:col-span-9 gap-10"> 
+                    <div className='flex flex-col gap-10'>
+                        <SinglepostData post={post} />
+                        <AuthorData author={post?.author} title={"About the Author"}/>
+                        <ShowComments comments = {post?.comments} />
+                        <CommentForm setShowLoginMsg= {setShowLoginMsg} />
+                        {
+                            showLoginMsg && <ModalPopup setShowLoginMsg={setShowLoginMsg} message='Please Login, you are not authorised to comment on posts.' />
+                        }
+                        <RelatedPosts category={post?.category} />
+                    </div>                
+                </div>
+                <Sidebar />
+            </div>            
+        </div>
+    </div>  
+    
   )
 }
 
