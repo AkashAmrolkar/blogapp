@@ -13,7 +13,7 @@ const ShowComments = ({comments}) => {
                         <img src={cmt?.user?.profile} height='60' width='60' className='rounded-full' alt={cmt?.user?.fullname} />  
                         <div> 
                             <p><NavLink to={`/users/${cmt?.user?._id}`} className='text-[#F43676] hover:opacity-80'>{cmt?.user?.fullname}</NavLink> on <FormatDate date={cmt?.createdAt} /></p>
-                            <p>{cmt.comment}</p>
+                            <p>{cmt?.comment}</p>
                         </div>  
                      </div>
                 </div>

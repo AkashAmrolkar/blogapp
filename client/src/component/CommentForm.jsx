@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useParams} from 'react-router-dom'
 import { useAuth } from "../store/Auth"
-const CommentForm = () => {
+const CommentForm = ({setShowLoginMsg}) => {
     const {postId} = useParams()
     const {token} = useAuth()
     const [text, setText] = useState('')
@@ -21,13 +21,14 @@ const CommentForm = () => {
               }),
             });
       
-            if (!response.ok) {
-              throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            if (response.status===401) {
+              setShowLoginMsg(true)
             }
-            setTimeout(() => {
-              window.location.reload();
-            }, 1000);
-        
+            if(response.ok){
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
+            }
           } catch (error) {
             console.log(error)
         }

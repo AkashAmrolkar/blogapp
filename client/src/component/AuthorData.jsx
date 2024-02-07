@@ -7,7 +7,7 @@ const AuthorData = ({author, title}) => {
     <div className=' p-5 rounded-xl bg-[#fff9f3]'>
         <h2 className=' text-black relative font-bold text-2xl mb-5 after:absolute after:content-[""] after:top-1/2 after:bg-gray-200 after:h-[1px] after-w-0 md:after:w-2/6 after:ml-5 max-w-full'>{title}</h2>
         <div className="flex flex-col lg:flex-row flex-1 items-center gap-10">
-            <div className=' rounded-full object-cover'>
+            <div className=' rounded-full object-cover 11'>
               <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full object-cover w-[200px] h-[200px] mx-auto' alt={author?.fullname} height="200" width="200" /> </NavLink>
             </div>
             <div className='flex-1'>
