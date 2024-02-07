@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PostCard from '../component/PostCard'
 import Sidebar from '../component/Sidebar'
 import ContentLoader, { Facebook } from 'react-content-loader'
+import { NavLink } from 'react-router-dom'
 
 const Home = () => {
 
@@ -31,9 +32,9 @@ const Home = () => {
   </ContentLoader>;
   }
   return (
-    <div className='container mx-auto py-10 mt-12 md:mt-20'>  
+    <div className='container mx-auto text-center py-10 mt-12 md:mt-20'>  
         
-      <div className="grid grid-cols-12 gap-5">
+      <div className="grid grid-cols-12 text-left gap-5">
         <div className="col-span-12 lg:col-span-9"> 
           {
             postData?.map(post =>(
@@ -43,7 +44,7 @@ const Home = () => {
         </div>
         <Sidebar />
       </div>
-      
+      <NavLink to={`/posts/`} className='text-white mx-auto mb-5 font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80 w-fit'>View All Posts</NavLink>
     </div>
   )
 }

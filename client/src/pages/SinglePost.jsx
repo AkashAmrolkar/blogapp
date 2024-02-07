@@ -19,6 +19,7 @@ const SinglePost = ({ match }) => {
                 return res.json();
             }).then((data)=>{
                 setPost(data)
+                console.log("Post Data: ", data)
             })
         };
         fetchPost()
