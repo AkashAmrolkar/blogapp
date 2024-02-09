@@ -25,11 +25,17 @@ const ContactForm = () => {
                 },
                 body: JSON.stringify(data),
             })
-            if(response.status === 201){
-                toast.success("Your request Submitted Successfully")
+            if(response.status === 200){
+                toast.success("Your request Submitted Successfully");
+                
             } else if(response.status === 500){
                 toast.error("Internal Server Error")
             }
+            setData({
+                fullname: '',
+                email: '',
+                message: ''
+            });
         } catch (error) {
             toast.error("Server Error")
         }        

@@ -34,12 +34,11 @@ export const saveContact = async(req, res) =>{
         try {
             await createTransport.sendMail(userMailOptions);
             await createTransport.sendMail(ownerMailOptions);
-            res.status(200).send('Form submitted successfully!');
+            return res.status(200).send('Form submitted successfully!');
           } catch (error) {
             console.error('Error sending emails:', error);
-            res.status(500).send('Internal Server Error');
+            return res.status(500).send('Internal Server Error');
           }
-        return res.status(201).json({ newContact })
 
     } catch (error) {
         console.log(error)
