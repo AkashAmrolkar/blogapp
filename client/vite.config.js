@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://blogapp-backend-ten.vercel.app/',
+        target: 'https://blogapp-backend-ten.vercel.app',
         changeOrigin: true,
         secure: false,
       }
