@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../store/Auth"
 import { IoMenu, IoClose } from "react-icons/io5";
-import { FaSearch, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { useState } from "react";
-import SearchBox from "./SearchBox";
 
 const Header = () => {
   const { isLoggedIn, userData } = useAuth();
@@ -11,8 +10,6 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(true);
   const [profile, setProfile] = useState(false);
-  const [search, setSearch] = useState(false);
-
   const handleMenu = () => {
     setOpenMenu(!handleMenu);
   }
@@ -24,9 +21,6 @@ const Header = () => {
   }
   const removeProfile = () => {
     setProfile(!profile)
-  }
-  const handleSearch = (e) => {
-    setSearch(!search)
   }
   return (
     <>
@@ -46,12 +40,10 @@ const Header = () => {
               {
                 !isLoggedIn && <><Link to={'/register'} className="nav-link text-[#302D55] font-semibold">Register</Link><Link to={'/login'} className="nav-link text-white bg-gradient-to-r from-[#FC6668] to-[#E10489] font-semibold px-6 py-2 rounded-xl hover:opacity-80">Login</Link></>
               }
-              <FaSearch onClick={handleSearch} />
             </div>
             <div className="flex justify-between items-center md:hidden gap-4 ">
 
               <FaUser className="border rounded-full h-4 w-4 text-5xl" onClick={handleHover} />
-              <FaSearch onClick={handleSearch} />
               {
                 profile &&
                 <div className="flex flex-col gap-4 bg-white shadow-md absolute top-20 w-fit right-0 transition-all delay-300 ease-in-out p-5 z-10" onClick={removeProfile}>
@@ -86,7 +78,6 @@ const Header = () => {
           </div>
         </nav>
       </div>
-      {search && <SearchBox setSearch={setSearch} />}
     </>
 
   )
