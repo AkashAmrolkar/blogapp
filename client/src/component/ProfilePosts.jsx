@@ -9,6 +9,9 @@ const ProfilePosts = ({post}) => {
             }) 
             if(response.ok){
                 console.log("Post Deleted")
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             }
             else{
                 console.log("Post not deleted")

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useAuth } from '../store/Auth'
 import {toast} from 'react-toastify'
 
-const UpdateProfileForm = () => {
+const UpdateProfileForm = ({setForm}) => {
     const {token} = useAuth();
     //console.log("Token: ",token)
     const [profile, setProfile] = useState(null)
@@ -35,6 +35,7 @@ const UpdateProfileForm = () => {
                 setTwitterUrl('');
                 setInstagramUrl('');
                 setfacebookUrl('');
+                setForm(false)
             }
             if (response.status === 500) {
                 toast.error("Internal Server Error")
@@ -56,8 +57,8 @@ const UpdateProfileForm = () => {
                     <textarea id='bio' name='bio' className='border border-gray-200 rounded-xl pl-3' rows="4" cols="50" value={bio} onChange={e=>setBio(e.target.value)} />
                 </div>
                 <div className="input_field flex gap-2 flex-col">
-                    <label className='font-semibold text-gray-500' htmlFor='linkedin'>Linkedin Url: </label>
-                    <input type='text' id='linkedin' className='border border-gray-200 h-10 rounded-xl pl-3' name='linkedin' value={twitterUrl} onChange={e=>setTwitterUrl(e.target.value)} />
+                    <label className='font-semibold text-gray-500' htmlFor='twitter'>Twitter Url: </label>
+                    <input type='text' id='twitter' className='border border-gray-200 h-10 rounded-xl pl-3' name='linkedin' value={twitterUrl} onChange={e=>setTwitterUrl(e.target.value)} />
                 </div>
                 <div className="input_field flex gap-2 flex-col">
                     <label className='font-semibold text-gray-500' htmlFor='instagram'>Instagram Url: </label>

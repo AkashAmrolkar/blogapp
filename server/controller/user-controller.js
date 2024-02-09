@@ -132,20 +132,30 @@ export const updateUser = async (req, res)=>{
            return res.status(404).json({message: "User not found"})
         }
         //console.log("UserID: ",userId)
-        const {bio,twitterUrl,facebookUrl,instagramUrl} = req.body
+        //const {bio,twitterUrl,facebookUrl,instagramUrl} = req.body
         //console.log(bio, twitterUrl, facebookUrl,instagramUrl)
+
+        const updateFields = {};
         let profileUrl
         if(req.file){
             const profileImg = req.file?.path
             profileUrl = await uploadOnCloudinary(profileImg)
         }
-        const updatedUser = await User.findByIdAndUpdate(userId, {
-                profile: profileUrl,
-                bio,
-                twitterUrl,
-                instagramUrl,
-                facebookUrl
-        },
+
+        if (req.body.bio) {
+            updateFields.bio = req.body.bio;
+        }
+        if (req.body.twitterUrl) {
+            updateFields.twitterUrl = req.body.twitterUrl;
+        }
+        if (req.body.facebookUrl) {
+            updateFields.facebookUrl = req.body.facebookUrl;
+        }
+        if (req.body.instagramUrl) {
+            updateFields.instagramUrl = req.body.instagramUrl;
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updateFields,
         { new: true, runValidators: true }
         );
         res.status(200).json({ message: 'User information updated successfully', updatedUser });

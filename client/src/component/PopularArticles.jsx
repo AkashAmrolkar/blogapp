@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 const PopularArticles = ({post}) => {
   const postTitle = (desc) => {
     const maxLength = 100;
-    console.log("Length", desc.length)
     return desc.substring(0, maxLength);
     
 }

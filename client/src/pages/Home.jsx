@@ -24,19 +24,18 @@ const Home = () => {
     
   }, [])
 
-  if (loading) {
-    return <ContentLoader>
-    <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
-    <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
-    <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
-  </ContentLoader>;
-  }
+  
   return (
     <div className='container mx-auto text-center py-10 mt-12 md:mt-20'>  
         
       <div className="grid grid-cols-12 text-left gap-5">
         <div className="col-span-12 lg:col-span-9"> 
           {
+            loading ? <ContentLoader>
+            <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+            <rect x="80" y="17" rx="4" ry="4" width="300" height="13" />
+            <rect x="80" y="40" rx="3" ry="3" width="250" height="10" />
+          </ContentLoader> :
             postData?.map(post =>(
               <PostCard key={post._id} {...post} />
             ))

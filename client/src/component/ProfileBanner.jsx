@@ -44,7 +44,7 @@ const ProfileBanner = ({ author, title }) => {
             <div className=''>
               <div className='absolute top-1/2 bg-white shadow-xl px-6 py-10 w-3/5 h-auto left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
                 <IoMdClose onClick={handleClose} className='text-black text-2xl absolute right-6 top-6 cursor-pointer' />
-                <UpdateProfileForm />
+                <UpdateProfileForm setForm={setForm} />
               </div>
             </div>
           }

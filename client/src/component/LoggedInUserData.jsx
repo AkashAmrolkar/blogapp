@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaXTwitter, FaFacebook, FaInstagram } from "react-icons/fa6";
 import {useAuth} from '../store/Auth'
-import UpdateProfileForm from './UpdateProfileForm';
-import { IoMdClose } from "react-icons/io";
 
 
 const LoggedInUserData = ({author, title}) => {
