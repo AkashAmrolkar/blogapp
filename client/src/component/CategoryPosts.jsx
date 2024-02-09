@@ -10,7 +10,7 @@ const CategoryPosts = () => {
 
     useEffect(()=>{
         const fetchPosts = async() => {
-            await fetch('/api/blogs',{
+            await fetch('https://blogapp-backend-ten.vercel.app/api/blogs',{
                 method: "GET"
             }).then((response)=>{
                 return response.json();

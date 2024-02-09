@@ -4,8 +4,8 @@ import PopularArticles from '../component/PopularArticles'
 const RelatedPosts = ({category}) => {
   const [posts, setPosts] = useState(null)
   useEffect(()=>{
-    const fetchData = () =>{
-      fetch('/api/blogs',{
+    const fetchData = async () =>{
+      await fetch('https://blogapp-backend-ten.vercel.app/api/blogs',{
         method: "GET"
       }).then((response)=>{
         return response.json()
