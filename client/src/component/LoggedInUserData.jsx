@@ -11,7 +11,7 @@ const LoggedInUserData = ({author, title}) => {
   
   useEffect(()=>{
     const fetchData = async()=>{
-      await fetch(`/api/users/profile`,{
+      await fetch(`https://blogapp-backend-ten.vercel.app/api/users/profile`,{
         method: "GET",
         headers: {
           'authorization': `Bearer ${token}`,
