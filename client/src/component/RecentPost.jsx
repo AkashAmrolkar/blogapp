@@ -4,7 +4,7 @@ import { Facebook} from 'react-content-loader'
 
 const RecentPost = () => {
     const [posts, setPosts] = useState(null)
-    //const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const limit=3
     useEffect(()=>{
         fetch(`https://blogapp-backend-ten.vercel.app/api/blogs?limit=${limit}`,{
@@ -13,7 +13,7 @@ const RecentPost = () => {
             return res.json()
         }).then((data)=>{
             setPosts(data['blogs'])
-            //setLoading(false)
+            setLoading(false)
         })
     }, [])
     //const recentPosts = posts?.blogs.slice(0, 3);
