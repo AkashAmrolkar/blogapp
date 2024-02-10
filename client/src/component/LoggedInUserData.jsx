@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaXTwitter, FaFacebook, FaInstagram } from "react-icons/fa6";
 import {useAuth} from '../store/Auth'
@@ -6,6 +6,19 @@ import {useAuth} from '../store/Auth'
 
 const LoggedInUserData = ({author, title}) => {
   const {userData} = useAuth();
+
+  // const [userData, settUserData] = useState(null);
+  
+  // useEffect(()=>{
+  //   const fetchData = async()=>{
+  //     await fetch(`/api/users/profile`,{
+  //       method: "GET",
+  //       headers: {
+  //         authori
+  //       }
+  //     })
+  //   }
+  // })
 
   const postContent = (data) =>{
     const maxLength = 200

@@ -16,18 +16,22 @@ export const AuthProvider = ({children}) =>{
 
     useEffect(()=>{
         if(token){
-          fetch('/api/users/profile', {
-            method:'GET',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        })
-          .then(response => response.json())
-          .then(data => {
-            setUserData(data);
+          const fetchProfileData = async() => {
+            fetch('/api/users/profile', {
+              method:'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
           })
-          .catch(error => console.error('Error fetching user data:', error));
+            .then(response => response.json())
+            .then(data => {
+              setUserData(data);
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+
+          }
+          fetchProfileData();
         }
       }, [token])
 
