@@ -5,20 +5,26 @@ import {useAuth} from '../store/Auth'
 
 
 const LoggedInUserData = ({author, title}) => {
-  const {userData} = useAuth();
+  const {token} = useAuth();
 
-  // const [userData, settUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   
-  // useEffect(()=>{
-  //   const fetchData = async()=>{
-  //     await fetch(`/api/users/profile`,{
-  //       method: "GET",
-  //       headers: {
-  //         authori
-  //       }
-  //     })
-  //   }
-  // })
+  useEffect(()=>{
+    const fetchData = async()=>{
+      await fetch(`/api/users/profile`,{
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }).then(response => response.json())
+      .then(data => {
+        setUserData(data);
+      })
+      .catch(error => console.error('Error fetching user data:', error));
+
+    }
+  })
 
   const postContent = (data) =>{
     const maxLength = 200
