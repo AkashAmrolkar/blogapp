@@ -11,6 +11,9 @@ const CreatePostForm = () => {
     const [select, setSelect] = useState('')    
     const [thumbnail, setThumbnail] = useState(null)
 
+    const handleChange=(html)=>{
+        setExcerpt(html)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -59,7 +62,7 @@ const CreatePostForm = () => {
                     ['image', 'code-block']
                 ]
                 }}
-                onChange={setExcerpt} />
+                handleChange={setExcerpt} />
             </div>
             <div className='form_field mb-4 flex flex-col gap-1'>
                 <label className=' font-semibold text-black text-lg' htmlFor='category' >Select Category: </label>
