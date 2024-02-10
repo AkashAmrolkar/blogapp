@@ -21,7 +21,8 @@ const ProfilePage = () => {
       }).catch(error => console.error('Error fetching user data:', error));
     }
     fetchData()
-  },[])
+  },[]);
+  console.log("userData", userData)
   return (
     <div className='container py-10 mt-12 md:mt-20'>
 
