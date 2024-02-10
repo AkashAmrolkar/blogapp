@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PopularArticles from './PopularArticles'
 import { ContentLoader} from 'react-content-loader'
 
-const RecentPost = () => {
+const RecentPost = (props) => {
     const [posts, setPosts] = useState(null)
     const [loading, setLoading] = useState(true);
     const limit=3
@@ -28,6 +28,7 @@ const RecentPost = () => {
             width={400}
             height={200}
             title="Loading news..."
+            {...props}
           >
             <rect x="42.84" y="9.93" rx="5" ry="5" width="143.55" height="86.59" />
             <rect x="192.84" y="9.67" rx="0" ry="0" width="148.72" height="100" />
