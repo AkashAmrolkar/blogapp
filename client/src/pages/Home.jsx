@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PostCard from '../component/PostCard'
 import Sidebar from '../component/Sidebar'
-import ContentLoader, { Facebook } from 'react-content-loader'
+import ContentLoader from 'react-content-loader'
 import { NavLink } from 'react-router-dom'
 
 const Home = () => {
