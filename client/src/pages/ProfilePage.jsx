@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useAuth} from '../store/Auth'
 import ProfilePosts from '../component/ProfilePosts';
 import ProfileBanner from '../component/ProfileBanner';
