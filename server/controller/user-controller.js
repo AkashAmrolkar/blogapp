@@ -90,7 +90,7 @@ export const login = async (req, res) =>{
 export const userProfile = async(req, res) => {
     try {
         const currentUser = await User.findById(req.user.userId).select('-password').populate('blogs');
-        //console.log("Current User: ", currentUser)
+        console.log("Current User: ", currentUser)
         if(!currentUser){
             return res.status(401).json(
                 {
