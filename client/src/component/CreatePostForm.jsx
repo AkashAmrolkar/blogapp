@@ -22,7 +22,7 @@ const CreatePostForm = () => {
             const respose = await fetch('https://blogapp-backend-ten.vercel.app/api/blogs/create-post', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'authorization': `Bearer ${token}`
                 },
                 body: formData
             })
