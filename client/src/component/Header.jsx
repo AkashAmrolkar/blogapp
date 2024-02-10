@@ -25,6 +25,9 @@ const Header = () => {
   const removeProfile = () => {
     setProfile(!profile)
   }
+  const removeMenu = () => {
+    setOpenMenu(!openMenu)
+  }
   return (
     <>
       <div className=" bg-transparent shadow-md p-4 fixed top-0 w-full bg-white z-10">
@@ -45,7 +48,7 @@ const Header = () => {
               }
             </div>
 
-            //Mobile View
+            {/* Mobile View */}
 
             <div className="flex justify-between items-center md:hidden gap-4 ">
 
@@ -67,7 +70,7 @@ const Header = () => {
               }
               {
                 !openMenu &&
-                <div className="flex flex-col gap-4 bg-white shadow-md absolute top-[55px] w-full transition-all delay-500 translate-x-0 ease-in-out right-0 p-5 z-10">
+                <div className="flex flex-col gap-4 bg-white shadow-md absolute top-[55px] w-full transition-all delay-500 translate-x-0 ease-in-out right-0 p-5 z-10" onClick={removeMenu}>
                   <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
                   <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
                   <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
