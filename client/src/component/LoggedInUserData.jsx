@@ -14,7 +14,7 @@ const LoggedInUserData = ({author, title}) => {
       await fetch(`/api/users/profile`,{
         method: "GET",
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       }).then(response => response.json())
