@@ -17,14 +17,12 @@ const LoggedInUserData = ({author, title}) => {
           'authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-      }).then(response => response.json())
-      .then(data => {
+      }).then(response => response.json()).then(data => {
         setUserData(data);
-      })
-      .catch(error => console.error('Error fetching user data:', error));
-
+      }).catch(error => console.error('Error fetching user data:', error));
     }
-  })
+    fetchData()
+  },[])
 
   const postContent = (data) =>{
     const maxLength = 200
