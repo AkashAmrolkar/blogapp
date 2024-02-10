@@ -1,6 +1,6 @@
 import Blogs from "../models/Blogs.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-import users from "../models/users.js";
+import User from "../models/users.js";
 
 
 export const getAllBlogs = async(req, res, next)=>{
@@ -54,7 +54,7 @@ export const addBlog = async(req, res) => {
         
     
         const savedPost = await newPost.save()
-        await users.findByIdAndUpdate(userId, { $push: { blogs: savedPost._id } });
+        await User.findByIdAndUpdate(userId, { $push: { blogs: savedPost._id } });
 
 
         return res.json({message: 'Post Created successfully..!', savedPost})
