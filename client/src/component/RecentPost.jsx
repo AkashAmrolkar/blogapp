@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PopularArticles from './PopularArticles'
-import { Facebook} from 'react-content-loader'
+import { ContentLoader} from 'react-content-loader'
 
 const RecentPost = () => {
     const [posts, setPosts] = useState(null)
