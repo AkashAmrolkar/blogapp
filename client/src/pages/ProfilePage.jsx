@@ -4,9 +4,24 @@ import ProfilePosts from '../component/ProfilePosts';
 import ProfileBanner from '../component/ProfileBanner';
 import { NavLink } from 'react-router-dom';
 const ProfilePage = () => {
-    const {userData} = useAuth();
-    //console.log("UserData", userData)
-    console.log(userData?.blogs.length)
+    const {token} = useAuth();
+
+  const [userData, setUserData] = useState(null);
+  
+  useEffect(()=>{
+    const fetchData = async()=>{
+      await fetch(`https://blogapp-backend-ten.vercel.app/api/users/profile`,{
+        method: "GET",
+        headers: {
+          'authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }).then(response => response.json()).then(data => {
+        setUserData(data);
+      }).catch(error => console.error('Error fetching user data:', error));
+    }
+    fetchData()
+  },[])
   return (
     <div className='container py-10 mt-12 md:mt-20'>
 
