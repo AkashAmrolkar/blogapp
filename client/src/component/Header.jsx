@@ -52,7 +52,7 @@ const Header = () => {
 
             <div className="flex justify-between items-center md:hidden gap-4 ">
 
-              <FaUser className="text-3xl" onClick={handleHover} />
+              <FaUser className="text-2xl" onClick={handleHover} />
               {
                 profile &&
                 <div className="flex flex-col gap-4 bg-white shadow-md absolute top-[55px] w-fit right-0 transition-all delay-300 ease-in-out p-5 z-10" onClick={removeProfile}>
