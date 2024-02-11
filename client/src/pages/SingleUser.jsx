@@ -10,7 +10,7 @@ const SingleUser = () => {
   const [authorData, setAuthorData] = useState(null);
   useEffect(()=>{
     const fetchAuthor =  () => {
-      fetch(`https://blogapp-backend-ten.vercel.app/api/users/author/${userId}`,{
+      fetch(`/api/users/author/${userId}`,{
         method: "GET"
       }).then((res)=>{
         return res.json()

@@ -17,7 +17,7 @@ const SinglePost = ({ match }) => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const fetchPost = () => {
-            fetch(`https://blogapp-backend-ten.vercel.app/api/blogs/${postId}`, {
+            fetch(`/api/blogs/${postId}`, {
                 method: 'GET'
             }).then((res) => {
                 return res.json();

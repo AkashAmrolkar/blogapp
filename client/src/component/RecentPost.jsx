@@ -7,7 +7,7 @@ const RecentPost = () => {
     const [loading, setLoading] = useState(true);
     const limit=3
     useEffect(()=>{
-        fetch(`https://blogapp-backend-ten.vercel.app/api/blogs?limit=${limit}`,{
+        fetch(`/api/blogs?limit=${limit}`,{
             method: "GET"
         }).then((res)=>{
             return res.json()

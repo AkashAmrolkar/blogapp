@@ -8,7 +8,7 @@ const [category, setCategory] = useState('')
 const [search, setSearch] = useState('')
 const [limit, setLimit] = useState(10)
 
-  const url = `https://blogapp-backend-ten.vercel.app/api/blogs?search=${search}&dateorder=${dateOrder}&category=${category}&limit=${limit}`;
+  const url = `/api/blogs?search=${search}&dateorder=${dateOrder}&category=${category}&limit=${limit}`;
 
   useEffect(()=>{
     const fetchAllPosts = async() => {
