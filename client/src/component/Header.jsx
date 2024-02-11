@@ -37,6 +37,7 @@ const Header = () => {
             <div className="space-x-4 hidden md:flex justify-between items-center">
               <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
               <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
+              <Link to={'/categories'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Categories</Link>
               <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
 
               {
@@ -73,6 +74,7 @@ const Header = () => {
                 <div className="flex flex-col gap-4 bg-white shadow-md absolute top-[55px] w-full transition-all delay-500 translate-x-0 ease-in-out right-0 p-5 z-10" onClick={removeMenu}>
                   <Link to={'/#'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Home</Link>
                   <Link to={'/posts'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Posts</Link>
+                  <Link to={'/categories'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Categories</Link>
                   <Link to={'/contact'} className="nav-link text-[#302D55] font-semibold hover:opacity-80">Contact</Link>
                 </div>
               }

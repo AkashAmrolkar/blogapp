@@ -30,7 +30,7 @@ const [limit, setLimit] = useState(10)
 // }
 
   return (
-    <div className='container mx-auto mt-12 md:mt-20'>
+    <div className='mt-12 md:mt-20'>
       <FilterComponent setLimit={setLimit} setSearch={setSearch} setDateOrder={setDateOrder} setCategory={setCategory} />
       <div className="grid md:grid-cols-3 gap-4 text-center">
         {

@@ -30,8 +30,8 @@ const blogSchema = new Schema({
     ],
     likes:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'user'
+            type: [String],
+            default: ''
         }
     ]
 },

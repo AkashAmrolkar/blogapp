@@ -119,13 +119,26 @@ export const deleteBlog = async(req, res, next)=>{
 
 }
 
-export const postLike = async(req,res) => {
-    const postID = req.params;
-    const userID = req.user.userId;
+export const postLike = async(req,res) => {    
+
     try {
+        const postID = req.params.id;
+        console.log("PostID", postID);
+        const userID = req.user.userId;
+        console.log("userID", userID);
         const post = await Blogs.findById(postID)
-        if(!post){
-            res.status(404).json({message: "Post not found"})
+        
+        if(post.likes.includes(userID)){
+            console.log("included")
+            post.likes = post.likes.filter((id) => id != userID);
+            await post.save()
+            return res.status(200).json({message: "Post unliked"})
+        } else{
+            console.log("Not Included")
+
+            post.likes.push(userID);
+            await post.save()
+            return res.status(200).json({message: "Post liked"})
         }
 
         

@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import FormatDate from '../component/FormatDate'
+import { FaRegHeart } from "react-icons/fa";
+import { useAuth } from '../store/Auth';
+import { useParams } from 'react-router-dom'
+
 const SinglepostData = ({post}) => {
+    console.log("Posts Data", post)
+    const {token , userData} = useAuth()
+    const { postId } = useParams();
+    const [like, setLike] = useState(false)
+    const handleLike = async() => {
+        const response = await fetch(`/api/blogs/like/${postId}`, {
+            method: 'PUT',
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
+        if(response.status === 200){
+            //console.log('successfull')
+            setLike(!like)
+        }
+    }
   return (
     <div>
         <div className=' border-b-2 border-gray-100'>
@@ -14,6 +34,9 @@ const SinglepostData = ({post}) => {
             </div>
             <div className='post_excerpt mb-6'>
                 <p className='text-[#002050] text-base'> {post?.description} </p>
+            </div>
+            <div>
+                <FaRegHeart onClick={handleLike}  style={{ color: like ? 'red' : 'black' }} />
             </div>
         </div>
         <div className='flex justify-between items-center my-5'>

@@ -10,6 +10,7 @@ import SingleUser from '../pages/SingleUser'
 import ProfilePage from "../pages/ProfilePage"
 import SingleCategoryPage from "../pages/SingleCategoryPage"
 import Contact from "../pages/Contact"
+import Categories from "../pages/Categories"
 
 const PageRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const PageRoutes = () => {
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/category/:category" element={<SingleCategoryPage/>} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/categories" element={<Categories />} />
     </Routes>
   )
 }

@@ -19,22 +19,22 @@ const FilterComponent = ({setDateOrder, setCategory, setSearch, setLimit}) => {
       }
   return (
     
-    <div className='flex items-center gap-5 mb-5'>
-    <div className="flex flex-3 flex-col gap-4">
+    <div className=' sm:block md:flex items-center gap-5'>
+    <div className="flex flex-3 flex-col gap-1  mb-5">
       <label htmlFor='' className=''>Search posts by type: </label>
       <input type='text' name="search" className='border border-gray-200 rounded-md py-2 px-3 focus:outline-none' placeholder='Type to search posts' onChange={handleSearch}/>
     </div>
-    <div className="flex flex-3 flex-col gap-4">
+    <div className="flex flex-3 flex-col gap-1  mb-5">
       <label htmlFor='' className=''>Select Date Order: </label>
       <select name= 'date_order' onChange={handleDateOrder} className='border border-gray-200 rounded-md py-2 px-3'>
         <option value='1'>Ascending</option>
         <option value='-1'>Descending</option>
       </select>
     </div>
-    <div className="flex flex-3 flex-col gap-4">
+    <div className="flex flex-3 flex-col gap-1  mb-5">
       <label htmlFor='' className=''>Select Posts by categories: </label>
       <select name= 'category' onChange={handleCategory} className='border border-gray-200 rounded-md py-2 px-3'>
-      <option selected value=''>All</option>
+      <option defaultValue=''>All</option>
         {
           categories.map((cat, index)=>(
             <option key={index} value={cat.slug}>{cat.name}</option>
@@ -42,10 +42,10 @@ const FilterComponent = ({setDateOrder, setCategory, setSearch, setLimit}) => {
         }
       </select>
     </div>
-    <div className="flex flex-3 flex-col gap-4">
+    <div className="flex flex-3 flex-col gap-1  mb-5">
       <label htmlFor='' className=''>Number of posts per page you want to show:  </label>
       <select name= 'limit' onChange={handleLimit} className='border border-gray-200 rounded-md py-2 px-3'>
-        <option selected value='6'>6</option>
+        <option defaultValue='6'>6</option>
         <option value='9'>9</option>
         <option value='12'>12</option>
         <option value='15'>15</option>
