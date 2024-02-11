@@ -12,7 +12,7 @@ const LoggedInUserData = ({ author, title }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      await fetch(`https://blogapp-backend-ten.vercel.app/api/users/profile`, {
+      await fetch(`/api/users/profile`, {
         method: "GET",
         headers: {
           'authorization': `Bearer ${token}`,

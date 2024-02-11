@@ -10,7 +10,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
     const fetchAllPosts = async () => {
-      await fetch('https://blogapp-backend-ten.vercel.app/api/blogs', {
+      await fetch('/api/blogs', {
         method:"GET"
       }).then((res)=>{
         return res.json();

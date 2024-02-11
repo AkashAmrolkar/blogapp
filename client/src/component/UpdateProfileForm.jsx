@@ -20,7 +20,7 @@ const UpdateProfileForm = ({setForm}) => {
             formData.append('twitterUrl', twitterUrl)
             formData.append('instagramUrl', instagramUrl)            
             formData.append('facebookUrl', facebookUrl)
-            const response = await fetch('https://blogapp-backend-ten.vercel.app/api/users/update', {
+            const response = await fetch('/api/users/update', {
                 method: "PUT",
                 headers:{
                     'authorization': `Bearer ${token}`
