@@ -4,7 +4,7 @@ import FormatDate from './FormatDate'
 const ProfilePosts = ({post}) => {
     const handleDelete = async ()=> {
         try {
-            const response = await fetch(`/api/blogs/${post?._id}`, {
+            const response = await fetch(`https://blogapp-backend-ten.vercel.app/api/blogs/${post?._id}`, {
                 method: "DELETE"
             }) 
             if(response.ok){

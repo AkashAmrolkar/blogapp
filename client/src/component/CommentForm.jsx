@@ -8,7 +8,7 @@ const CommentForm = ({setShowLoginMsg}) => {
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const response = await fetch('/api/comments/add', {
+            const response = await fetch('https://blogapp-backend-ten.vercel.app/api/comments/add', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
