@@ -12,7 +12,7 @@ const CategoryPosts = () => {
         const fetchPosts = async() => {
             await fetch('/api/blogs',{
                 method: "GET"
-            }).then((response)=>{
+            }).then((response)=>{ 
                 return response.json();
             }).then((data)=>{
                 setPosts(data['blogs'])
