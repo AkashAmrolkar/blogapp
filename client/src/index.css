@@ -6,9 +6,22 @@ body{
     
     font-family: 'Poppins', sans-serif;
 }
-/* .nav-link:last-child{
-    color: #3b82f6;
-    background-color: #fff;
-    padding: 10px 25px;
-    border-radius: 25px;
-} */
+.swiper-button-prev, .swiper-button-next{
+    position: absolute;
+    top: 90%;
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(to right, #FC6668, #E10489);
+    border-radius: 50%;
+}
+.swiper-button-prev{
+    left: 70%;
+}
+.swiper-button-prev::after, .swiper-button-next::after{
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+.swiper-button-next{
+    right: 15px;
+}

@@ -33,7 +33,7 @@ const SinglepostData = ({post}) => {
                 <div className='text-[#4d6385]'><span className=' font-semibold'>Created At:</span> <FormatDate date={post?.createdAt} /></div>
             </div>
             <div className='post_excerpt mb-6'>
-                <p className='text-[#002050] text-base'> {post?.description} </p>
+                <div className='text-[#002050] text-base' dangerouslySetInnerHTML={{__html: post?.description}} />
             </div>
             <div>
                 <FaRegHeart onClick={handleLike}  style={{ color: like ? 'red' : 'black' }} />

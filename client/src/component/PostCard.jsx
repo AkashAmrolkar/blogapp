@@ -7,9 +7,9 @@ import { FaComments } from "react-icons/fa";
 const PostCard = ({title, category, description, author, featured_img, createdAt, updatedAt, comments, _id}) => {
     const [showComment, setShowComment] = useState(false)
 
-    const postContent = (desc) => {
-        const maxLength = 250
-        return desc.substring(0, maxLength);
+    const postContent = (description) => {
+        return description.length > 250 ? description.substring(0, 250) + "..." : description;
+
     }
 
     const handleMouseenter = () => {
@@ -40,7 +40,7 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
                 <div className='text-[#4d6385]'><FormatDate date={createdAt} /></div>
             </div>
             <div className='post_excerpt mb-6'>
-                <p className='text-[#002050] text-base'> {postContent(description)+'...'} </p>
+                <div className='text-[#002050] text-base' dangerouslySetInnerHTML={{ __html: postContent(description) }} />
             </div>            
             <NavLink to={`/posts/${_id}`} className='text-white font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80'>Read more</NavLink>
         </div>

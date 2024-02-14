@@ -24,11 +24,11 @@ const CategoryPosts = () => {
     const data = posts?.filter(post => post.category === category);
     //console.log(data)
   return (
-    <div>
+    <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8'>
         {
             data?.map((post, index)=>(
                 <>
-                    <div className='grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-8'>
+                    <div className=''>
                         <CategoryPostCard post={post} key={index} />
                     </div>                    
                 </>                

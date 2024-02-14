@@ -4,8 +4,7 @@ import FormatDate from './FormatDate'
 
 const CategoryPostCard = ({post}) => {
   const postContent = (desc) => {
-    const maxLength = 250
-    return desc.substring(0, maxLength);
+    return desc.length > 250 ? desc.substring(0, 250) + "..." : desc;
   }
   return (
     <div className='flex flex-col gap-5 bg-white shadow-md rounded-b-xl mb-8'>
@@ -18,7 +17,7 @@ const CategoryPostCard = ({post}) => {
               <div className='text-[#4d6385]'><FormatDate date={post?.createdAt} /></div>
           </div>
           <div className=' text-left post_excerpt'>
-              <p className='text-[#002050] text-base'> {postContent(post?.description)+'...'} </p>
+              <div className='text-[#002050] text-base' dangerouslySetInnerHTML={{__html: postContent(post?.description)}} />
           </div>
           <NavLink to={`/posts/${post?._id}`} className='text-white mb-5 font-semibold bg-gradient-to-r from-[#FC6668] to-[#E10489] px-6 py-2 rounded-xl hover:opacity-80 w-fit'>Read more</NavLink>
         </div>

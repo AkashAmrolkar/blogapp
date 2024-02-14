@@ -7,7 +7,7 @@ const RecentPost = () => {
     const [loading, setLoading] = useState(true);
     const limit=3
     useEffect(()=>{
-        fetch(`/api/blogs?limit=${limit}`,{
+        fetch(`/api/blogs?limit=${limit}&dateorder=-1`,{
             method: "GET"
         }).then((res)=>{
             return res.json()

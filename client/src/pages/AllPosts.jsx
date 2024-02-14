@@ -32,7 +32,7 @@ const [limit, setLimit] = useState(10)
   return (
     <div className='mt-12 md:mt-20'>
       <FilterComponent setLimit={setLimit} setSearch={setSearch} setDateOrder={setDateOrder} setCategory={setCategory} />
-      <div className="grid md:grid-cols-3 gap-4 text-center">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
         {
           posts.length > 0 ?
           posts?.map((post)=>(
