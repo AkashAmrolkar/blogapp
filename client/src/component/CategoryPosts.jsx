@@ -30,7 +30,7 @@ const CategoryPosts = () => {
                 <>
                     <div className=''>
                         <CategoryPostCard post={post} key={index} />
-                    </div>                    
+                    </div> 
                 </>                
             ))
         }
