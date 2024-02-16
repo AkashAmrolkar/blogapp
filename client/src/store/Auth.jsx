@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) =>{
     useEffect(()=>{
         if(token){
           const fetchProfileData = async() => {
-            await fetch('/api/users/profile', {
+            await fetch('https://blog-app-1lq4.onrender.com/api/users/profile', {
               method:'GET',
               headers: {
                 'Authorization': `Bearer ${token}`,

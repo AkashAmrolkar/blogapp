@@ -17,7 +17,7 @@ const SinglePost = ({ match }) => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const fetchPost = () => {
-            fetch(`/api/blogs/${postId}`, {
+            fetch(`https://blog-app-1lq4.onrender.com/api/blogs/${postId}`, {
                 method: 'GET'
             }).then((res) => {
                 return res.json();

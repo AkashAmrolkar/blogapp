@@ -10,7 +10,7 @@ const SingleUser = () => {
   const [authorData, setAuthorData] = useState(null);
   useEffect(()=>{
     const fetchAuthor =  () => {
-      fetch(`/api/users/author/${userId}`,{
+      fetch(`https://blog-app-1lq4.onrender.com/api/users/author/${userId}`,{
         method: "GET"
       }).then((res)=>{
         return res.json()

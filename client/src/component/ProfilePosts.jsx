@@ -4,7 +4,7 @@ import FormatDate from './FormatDate'
 const ProfilePosts = ({post}) => {
     const handleDelete = async ()=> {
         try {
-            const response = await fetch(`/api/blogs/${post?._id}`, {
+            const response = await fetch(`https://blog-app-1lq4.onrender.com/api/blogs/${post?._id}`, {
                 method: "DELETE"
             }) 
             if(response.ok){

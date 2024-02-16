@@ -18,7 +18,7 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await fetch('/api/contact/save-contact',{
+          const response = await fetch('https://blog-app-1lq4.onrender.com/api/contact/save-contact',{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

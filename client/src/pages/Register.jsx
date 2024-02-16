@@ -30,7 +30,7 @@ const Register = () => {
         return toast.error("Password and Confirmed Password Mismatched..!")
       }
       formData.append('profile', profile);
-      const response = await fetch('/api/users/register', {
+      const response = await fetch('https://blog-app-1lq4.onrender.com/api/users/register', {
         method: 'POST',
         body: formData,
       });
