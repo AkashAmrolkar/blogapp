@@ -7,10 +7,10 @@ const CategoryPostCard = ({post}) => {
     return desc.length > 250 ? desc.substring(0, 250) + "..." : desc;
   }
   return (
-    <div className='flex flex-col gap-5 bg-white shadow-md rounded-b-xl mb-8'>
-        <NavLink to={`/posts/${post?._id}`}><img src={post?.featured_img} className=' shadow-md rounded-t-xl' alt={post?.title} height='' width='' /></NavLink>
+    <div className='flex flex-col gap-5 bg-white shadow-md rounded-b-xl py-5 mb-8'>
+        <NavLink to={`/posts/${post?._id}`}><img src={post?.featured_img} className=' shadow-md rounded-t-xl w-full h-[250px] object-cover' alt={post?.title} height='' width='' /></NavLink>
         <div className='px-4 flex flex-col gap-5'>
-          <NavLink to={`/posts/${post?._id}`}><h2 className='text-left text-2xl font-semibold hover:opacity-80 text-[#302D55]'>{post?.title}</h2></NavLink>
+          <NavLink to={`/posts/${post?._id}`}><h2 className='text-left text-xl lg:text-2xl font-semibold hover:opacity-80 text-[#302D55]'>{post?.title}</h2></NavLink>
           <div className='flex gap-5 items-center justify-center'>
               <NavLink to={`/users/${post?.author._id}`}><img src={post?.author?.profile} className=' rounded-full w-[30px] h-[30px] object-cover shadow-xl'  height='30' width='30' alt={post?.author?.fullname} /></NavLink>
               <NavLink to={`/users/${post?.author._id}`}><p className='text-[#F43676] opacity-80'><span className=' text-sm text-[#002050] '>By </span>{post?.author?.fullname}</p></NavLink>

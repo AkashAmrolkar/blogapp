@@ -23,7 +23,7 @@ const ProfilePage = () => {
     fetchData()
   },[])
   return (
-    <div className='container py-10 mt-12 md:mt-20'>
+    <div className='py-10 mt-12 md:mt-20'>
 
       <ProfileBanner author={userData} />
         

@@ -71,7 +71,7 @@ const SinglePost = ({ match }) => {
                     <circle cx="82" cy="1110" r="26" />
                     <rect x="138" y="1111" rx="4" ry="4" width="120" height="10" />
                 </ContentLoader> :
-                <div className='container mx-auto mt-12 md:mt-20 py-10'>
+                <div className='mt-12 md:mt-20 py-10'>
                     <div className="grid grid-cols-12 gap-5">
                         <div className="col-span-12 lg:col-span-9 gap-10">
                             <div className='flex flex-col gap-10'>

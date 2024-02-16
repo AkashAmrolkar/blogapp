@@ -25,7 +25,7 @@ const SingleUser = () => {
 
   const blogs = authorData?.blogs
   return (
-    <div className='container mx-auto flex flex-col gap-10 mt-12 md:mt-20 py-10'>
+    <div className='flex flex-col gap-10 mt-12 md:mt-20 py-10'>
       <SingleAuthorData author= {authorData} />        
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-12 lg:col-span-9" id='all-posts'> 

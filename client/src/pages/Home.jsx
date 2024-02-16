@@ -26,7 +26,7 @@ const Home = () => {
 
   
   return (
-    <div className='container mx-auto text-center py-10 mt-12 md:mt-20'>  
+    <div className='mx-auto text-center py-10 mt-12 md:mt-20'>  
         
       <div className="grid grid-cols-12 text-left gap-5">
         <div className="col-span-12 lg:col-span-9"> 
