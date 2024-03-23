@@ -11,7 +11,7 @@ const SinglepostData = ({post}) => {
     const { postId } = useParams();
     const [like, setLike] = useState(false)
     const handleLike = async() => {
-        const response = await fetch(`https://blog-app-1lq4.onrender.com/api/blogs/like/${postId}`, {
+        const response = await fetch(`/api/blogs/like/${postId}`, {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`

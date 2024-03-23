@@ -19,7 +19,7 @@ const CreatePostForm = () => {
             formData.append('Excerpt', excerpt)
             formData.append('category', select)
             formData.append('thumbnail', thumbnail)
-            const respose = await fetch('https://blog-app-1lq4.onrender.com/api/blogs/create-post', {
+            const respose = await fetch('/api/blogs/create-post', {
                 method: 'POST',
                 headers: {
                     'authorization': `Bearer ${token}`

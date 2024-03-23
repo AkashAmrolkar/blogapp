@@ -7,9 +7,12 @@ import { FaComments } from "react-icons/fa";
 const PostCard = ({title, category, description, author, featured_img, createdAt, updatedAt, comments, _id}) => {
     const [showComment, setShowComment] = useState(false)
 
-    const postContent = (description) => {
+    const postContent = (description) => {        
+        const maxLength = 250
+        return description.substring(0, maxLength);
+        
         return description.length > 250 ? description.substring(0, 250) + "..." : description;
-
+        
     }
 
     const handleMouseenter = () => {
@@ -35,7 +38,7 @@ const PostCard = ({title, category, description, author, featured_img, createdAt
             
             <NavLink to={`/posts/${_id}`}><h1 className='font-bold text-[#302D55] text-lg md:text-xl mb-4 hover:opacity-80'>{title}</h1></NavLink> 
             {author.fullname ?
-                <div className='flex gap-5 mb-4 items-center justify-center'>
+                <div className='flex gap-5 mb-4 items-center'>
                     <NavLink to={`/users/${author?._id}`}><img src={author?.profile} className=' rounded-full w-[50px] h-[50px] object-cover shadow-xl'  height='50' width='50' alt={author?.fullname} /></NavLink>
                     <NavLink to={`/users/${author?._id}`}><p className='text-transparent bg-clip-text bg-gradient-to-r from-[#FC6668] to-[#E10489] hover:opacity-80'><span className=' text-sm text-[#002050] '>By </span>{author.fullname}</p></NavLink>
                     <div className='text-[#4d6385]'><FormatDate date={createdAt} /></div>

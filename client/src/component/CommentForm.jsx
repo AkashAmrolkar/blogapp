@@ -8,7 +8,7 @@ const CommentForm = ({setShowLoginMsg}) => {
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const response = await fetch('https://blog-app-1lq4.onrender.com/api/comments/add', {
+            const response = await fetch('/api/comments/add', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

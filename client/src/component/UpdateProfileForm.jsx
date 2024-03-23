@@ -36,6 +36,9 @@ const UpdateProfileForm = ({setForm}) => {
                 setInstagramUrl('');
                 setfacebookUrl('');
                 setForm(false)
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             }
             if (response.status === 500) {
                 toast.error("Internal Server Error")
