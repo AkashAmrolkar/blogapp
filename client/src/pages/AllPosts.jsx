@@ -10,7 +10,7 @@ const [search, setSearch] = useState('')
 const [limit, setLimit] = useState(10)
 const [loading, setloading] = useState(true)
 
-  const url = `${process.env.SERVER_URL}/api/blogs?search=${search}&dateorder=${dateOrder}&category=${category}&limit=${limit}`;
+  const url = `https://blog-app-1lq4.onrender.com/api/blogs?search=${search}&dateorder=${dateOrder}&category=${category}&limit=${limit}`;
 
   useEffect(()=>{
     const fetchAllPosts = async() => {
