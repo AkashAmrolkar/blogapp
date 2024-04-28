@@ -1,7 +1,5 @@
 import Layout from "./layout/Layout"
 import { ToastContainer } from 'react-toastify'
-import dotenv from "dotenv"
-dotenv.config();
 
 function App() {
   return (
