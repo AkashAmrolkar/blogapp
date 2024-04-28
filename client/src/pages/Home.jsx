@@ -10,7 +10,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
     const fetchAllPosts = async () => {
-      await fetch('/api/blogs', {
+      await fetch(`${process.env.server_URL}/api/blogs`, {
         method:"GET"
       }).then((res)=>{
         return res.json();
