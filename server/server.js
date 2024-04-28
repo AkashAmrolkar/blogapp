@@ -18,7 +18,7 @@ app.use(cors({
     credentials: true,
    // origin: 'https://blogapp-akash-amrolkar.vercel.app',
     //origin: 'https://akash-amrolkar-blogapp.netlify.app',
-    origin: 'http://localhost:5173'
+    origin: ['http://localhost:5173', 'https://akash-blogapp.vercel.app/']
 }));
 app.use('/api/users', userRoute)
 app.use('/api/blogs', blogRouter)
