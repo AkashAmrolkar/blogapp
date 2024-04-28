@@ -9,7 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://blog-app-1lq4.onrender.com',
         changeOrigin: true,
-        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   }
