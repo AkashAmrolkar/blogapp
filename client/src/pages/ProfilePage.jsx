@@ -10,7 +10,7 @@ const ProfilePage = () => {
   
   useEffect(()=>{
     const fetchData = async()=>{
-      await fetch(`/api/users/profile`,{
+      await fetch(`https://blog-app-1lq4.onrender.com/api/users/profile`,{
         method: "GET",
         headers: {
           'authorization': `Bearer ${token}`,

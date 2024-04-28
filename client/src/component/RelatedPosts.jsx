@@ -5,7 +5,7 @@ const RelatedPosts = ({category}) => {
   const [posts, setPosts] = useState(null)
   useEffect(()=>{
     const fetchData = async () =>{
-      await fetch('/api/blogs',{
+      await fetch('https://blog-app-1lq4.onrender.com/api/blogs',{
         method: "GET"
       }).then((response)=>{
         return response.json()
