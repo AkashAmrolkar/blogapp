@@ -34,7 +34,7 @@ const FilterComponent = ({setDateOrder, setCategory, setSearch, setLimit}) => {
     <div className="flex flex-3 flex-col gap-1  mb-5">
       <label htmlFor='' className=''>Select Posts by categories: </label>
       <select name= 'category' onChange={handleCategory} className='border border-gray-200 rounded-md py-2 px-3'>
-      <option value>All</option>
+      <option value='all'>All</option>
         {
           categories.map((cat, index)=>(
             <option key={index} value={cat.slug}>{cat.name}</option>

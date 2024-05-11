@@ -11,7 +11,16 @@ export const getAllBlogs = async(req, res, next)=>{
         const search = req.query.search || '';
         const category = req.query.category || '';
         const dateOrder = req.query.dateorder || 1;
-        blogs = await Blogs.find({title: {$regex: search, $options: 'i'}, category: {$regex: category, $options: 'i'}})
+
+        let categoryQuery = {}; // Initialize an empty object for the category query
+
+        // If category is not 'all', add it to the category query
+        if (category !== 'all') {
+            categoryQuery = { category: { $regex: category, $options: 'i' } };
+        }
+        blogs = await Blogs.find({title: {$regex: search, $options: 'i'},
+            ...categoryQuery
+        })
         .sort({ createdAt: dateOrder })
         .skip(page*limit)
         .limit(limit)
