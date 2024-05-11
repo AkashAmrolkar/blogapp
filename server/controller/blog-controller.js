@@ -15,7 +15,7 @@ export const getAllBlogs = async(req, res, next)=>{
         let categoryQuery = {}; // Initialize an empty object for the category query
 
         // If category is not 'all', add it to the category query
-        if (category !== 'all') {
+        if (category !== '') {
             categoryQuery = { category: { $regex: category, $options: 'i' } };
         }
         blogs = await Blogs.find({title: {$regex: search, $options: 'i'},
