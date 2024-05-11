@@ -74,7 +74,7 @@ const CreatePostForm = () => {
             <div className="form_field mb-4 flex gap-1">
                 <div className="flex flex-col">
                     <label className=' font-semibold text-black text-lg' htmlFor='thumbnail'>Select Featured Image: </label>
-                    <input type='file' className='w-fit' id='thumbnail' onChange={(e)=> setThumbnail(e.target.files[0])} />
+                    <input type='file' className='w-full' id='thumbnail' onChange={(e)=> setThumbnail(e.target.files[0])} />
                 </div>
             </div>
             <button
